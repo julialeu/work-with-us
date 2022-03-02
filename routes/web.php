@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('dummy', 'App\Http\Controllers\DummyController@execute');
+
+include 'api.php';
+
