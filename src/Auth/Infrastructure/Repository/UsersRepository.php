@@ -26,7 +26,7 @@ class UsersRepository
         return $user;
     }
 
-    public function createUser(User $user)
+    public function createUser(User $user): void
     {
         $name = $user->name();
         $company = $user->company();
