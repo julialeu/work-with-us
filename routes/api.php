@@ -32,6 +32,6 @@ Route::group([
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
 
-    Route::get('register', RegisterUserController::class);
+    Route::post('register', RegisterUserController::class);
 
 });

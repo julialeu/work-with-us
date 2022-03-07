@@ -24,7 +24,7 @@ class RegisterUserController extends Controller
             $company = $request->get('company');
 
             try {
-                $registerUserUseCase->execute($email, $password, $name, $company);
+                $registrationResult = $registerUserUseCase->execute($email, $password, $name, $company);
             } catch (UserWithSameEmailExistException $e) {
                 return new JsonResponse(
                     ['errorMessage' => 'Ya existe un usuario registrado con este email'],
@@ -32,9 +32,7 @@ class RegisterUserController extends Controller
                 );
             }
 
-            return new JsonResponse(
-                ['ok']
-            );
+            return new JsonResponse($registrationResult);
         } catch (Throwable $e) {
             Log::error('Error: ' . $e->getMessage());
             return new JsonResponse(
