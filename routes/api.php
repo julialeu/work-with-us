@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GetUserProfileController;
 use App\Http\Controllers\RegisterUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,8 +31,10 @@ Route::group([
     Route::post('login', 'App\Http\Controllers\AuthController@login');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
+    Route::post('me', 'App\Http\Controllers\AuthController@me');
 
     Route::post('register', RegisterUserController::class);
+
+    Route::get('profile', GetUserProfileController::class);
 
 });
