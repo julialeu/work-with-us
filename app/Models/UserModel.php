@@ -9,9 +9,15 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject
+class UserModel extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.

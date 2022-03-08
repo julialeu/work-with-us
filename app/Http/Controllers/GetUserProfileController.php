@@ -35,7 +35,10 @@ class GetUserProfileController extends Controller
         } catch (Throwable $e) {
             Log::error('Error: ' . $e->getMessage());
             return new JsonResponse(
-                ['errorMessage' => 'Internal Error'],
+                [
+                    'errorMessage' => $e->getMessage(),
+                    'errorTrace' => $e->getTraceAsString()
+                ],
                 500
             );
         }

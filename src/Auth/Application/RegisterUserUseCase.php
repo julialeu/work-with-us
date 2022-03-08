@@ -49,7 +49,7 @@ class RegisterUserUseCase
         ];
 
         if (! ($token = auth()->attempt($credentials))) {
-            throw new RuntimeException('User created but error in authentication');
+            throw new RuntimeException('UserModel created but error in authentication');
         }
 
         return $this->respondWithToken($token);

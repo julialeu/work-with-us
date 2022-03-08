@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\UserModel;
 use Illuminate\Support\Facades\Hash;
 
 class DummyController extends Controller
@@ -15,7 +15,7 @@ class DummyController extends Controller
     public function execute()
     {
 
-        $user = new User();
+        $user = new UserModel();
         $user->name = 'Julia';
         $user->email = 'julia@gmail.com';
         $user->password = Hash::make('1234');

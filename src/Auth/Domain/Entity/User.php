@@ -7,7 +7,7 @@ class User
     private string $email;
     private string $hashedPassword;
     private string $name;
-    private string $company;
+    private ?string $company;
 
     public function email(): string
     {
@@ -50,7 +50,7 @@ class User
         return $this->company;
     }
 
-    public function setCompany($company): self
+    public function setCompany(?string $company): self
     {
         $this->company = $company;
 
