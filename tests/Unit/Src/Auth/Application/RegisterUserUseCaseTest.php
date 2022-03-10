@@ -67,7 +67,7 @@ class RegisterUserUseCaseTest extends TestCase
     }
 
     /**
-     * When an user with the same email exists
+     * When a user with the same email exists
      * should throw an specific exception
      */
     public function test_exception_is_triggered_when_same_email_exists(): void

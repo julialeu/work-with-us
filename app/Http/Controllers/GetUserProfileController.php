@@ -26,7 +26,6 @@ class GetUserProfileController extends Controller
             $user = $this->transformUserModelService->transformUserModel($userModel);
             $username = $user->name();
 
-
             return new JsonResponse(
                 [
                     'name' => $username
