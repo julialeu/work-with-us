@@ -4,10 +4,23 @@ namespace WorkWithUs\Auth\Domain\Entity;
 
 class User
 {
+    private ?int $userId;
     private string $email;
     private string $hashedPassword;
     private string $name;
     private ?string $company;
+
+    public function id(): ?int
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(?int $userId): self
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
 
     public function email(): string
     {
@@ -56,6 +69,4 @@ class User
 
         return $this;
     }
-
-
 }

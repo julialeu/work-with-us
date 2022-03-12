@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\CreateJobVacancyController;
 use App\Http\Controllers\GetUserProfileController;
 use App\Http\Controllers\RegisterUserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,5 +36,7 @@ Route::group([
     Route::post('register', RegisterUserController::class);
 
     Route::get('profile', GetUserProfileController::class);
+
+    Route::post('job-vacancy', CreateJobVacancyController::class);
 
 });

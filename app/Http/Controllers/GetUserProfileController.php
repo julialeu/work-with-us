@@ -6,24 +6,24 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Throwable;
-use WorkWithUs\Auth\Domain\Service\TransformUserModelService;
+use WorkWithUs\Auth\Domain\Service\GetAuthenticatedUserService;
 
 
 class GetUserProfileController extends Controller
 {
-    private TransformUserModelService $transformUserModelService;
+    private GetAuthenticatedUserService $getAuthenticatedUserService;
 
-    public function __construct(TransformUserModelService $transformUserModelService)
-    {
-        $this->transformUserModelService = $transformUserModelService;
+    public function __construct(
+        GetAuthenticatedUserService $getAuthenticatedUserService
+    ) {
+        $this->getAuthenticatedUserService = $getAuthenticatedUserService;
     }
 
     public function __invoke(
         Request $request,
     ): JsonResponse {
         try {
-            $userModel = auth()->user();
-            $user = $this->transformUserModelService->transformUserModel($userModel);
+            $user = $this->getAuthenticatedUserService->execute();
             $username = $user->name();
 
             return new JsonResponse(

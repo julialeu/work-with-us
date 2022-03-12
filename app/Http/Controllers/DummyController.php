@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\UserModel;
 use Illuminate\Support\Facades\Hash;
+use WorkWithUs\Auth\Domain\Service\GetAuthenticatedUserService;
+use WorkWithUs\Auth\Domain\Service\TransformUserModelService;
 
 class DummyController extends Controller
 {
@@ -14,13 +16,9 @@ class DummyController extends Controller
      */
     public function execute()
     {
-
-        $user = new UserModel();
-        $user->name = 'Julia';
-        $user->email = 'julia@gmail.com';
-        $user->password = Hash::make('1234');
-
-        $user->save();
+        $transformUserModelService = new TransformUserModelService(
+        );
+        $getAuthenticatedUserService = new GetAuthenticatedUserService(new TransformUserModelService());
 
 
 
