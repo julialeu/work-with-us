@@ -20,7 +20,7 @@ class CreateJobVacancyUseCase
         string $company,
         string $location,
         string $modality,
-        string $workTime,
+        string $workingTime,
         string $experience
     ) {
         $jobVacancy = (new JobVacancy())
@@ -29,9 +29,10 @@ class CreateJobVacancyUseCase
             ->setCompany($company)
             ->setLocation($location)
             ->setModality($modality)
-            ->setWorkTime($workTime)
+            ->setWorkingTime($workingTime)
             ->setExperience($experience);
 
         $this->jobVacancyRepository->createJobVacancy($jobVacancy);
+
     }
 }

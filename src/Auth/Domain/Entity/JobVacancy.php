@@ -11,7 +11,7 @@ class JobVacancy
     private string $company;
     private string $location;
     private string $modality;
-    private string $workTime;
+    private string $workingTime;
     private string $experience;
 
     public function id(): int
@@ -87,14 +87,14 @@ class JobVacancy
         return $this;
     }
 
-    public function workTime(): string
+    public function workingTime(): string
     {
-        return $this->workTime;
+        return $this->workingTime;
     }
 
-    public function setWorkTime(string $workTime): self
+    public function setWorkingTime(string $workingTime): self
     {
-        $this->workTime = $workTime;
+        $this->workingTime = $workingTime;
 
         return $this;
     }

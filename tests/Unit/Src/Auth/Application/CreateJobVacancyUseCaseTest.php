@@ -31,7 +31,7 @@ class CreateJobVacancyUseCaseTest extends TestCase
            ->setCompany('Cocacola')
            ->setLocation('Pamplona')
            ->setModality('on_site')
-           ->setWorkTime('Jornada completa')
+           ->setWorkingTime('Jornada completa')
            ->setExperience('trainee');
 
        $this->jobVacancyRepository

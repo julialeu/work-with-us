@@ -18,10 +18,15 @@ class CreateJobVacancyController extends Controller
         $userId = $user->id();
 
         $title = $request->get('title');
+
+        \Log::info('title: ' . $title);
+
+
+
         $company = $request->get('company');
         $location = $request->get('location');
         $modality = $request->get('modality');
-        $workTime = $request->get('workTime');
+        $workingTime = $request->get('workingTime');
         $experience = $request->get('experience');
 
         $addJobVacancyUseCase->execute(
@@ -30,7 +35,7 @@ class CreateJobVacancyController extends Controller
             $company,
             $location,
             $modality,
-            $workTime,
+            $workingTime,
             $experience
         );
 
