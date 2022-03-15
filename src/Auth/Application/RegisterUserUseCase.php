@@ -2,22 +2,26 @@
 
 namespace WorkWithUs\Auth\Application;
 
-use http\Exception\RuntimeException;
+use RuntimeException;
 use WorkWithUs\Auth\Domain\Entity\User;
 use WorkWithUs\Auth\Domain\Service\HashPasswordService;
 use WorkWithUs\Auth\Infrastructure\Repository\UsersRepository;
+use WorkWithUs\Auth\Infrastructure\Service\AuthenticateUserService;
 
 class RegisterUserUseCase
 {
     private UsersRepository $usersRepository;
     private HashPasswordService $hashPasswordService;
+    private AuthenticateUserService $authenticateUserService;
 
     public function __construct(
         UsersRepository $usersRepository,
-        HashPasswordService $hashPasswordService
+        HashPasswordService $hashPasswordService,
+        AuthenticateUserService $authenticateUserService,
     ) {
         $this->usersRepository = $usersRepository;
         $this->hashPasswordService = $hashPasswordService;
+        $this->authenticateUserService = $authenticateUserService;
     }
 
     public function execute(
@@ -42,18 +46,16 @@ class RegisterUserUseCase
 
         $this->usersRepository->createUser($user);
 
-
         $credentials = [
             'email' => $email,
             'password' => $rawPassword
         ];
 
-        if (! ($token = auth()->attempt($credentials))) {
+        if (! ($token = $this->authenticateUserService->login($credentials))) {
             throw new RuntimeException('UserModel created but error in authentication');
         }
 
         return $this->respondWithToken($token);
-
     }
 
     /**
@@ -68,7 +70,7 @@ class RegisterUserUseCase
         return [
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => $this->authenticateUserService->getTTl()
         ];
     }
 }

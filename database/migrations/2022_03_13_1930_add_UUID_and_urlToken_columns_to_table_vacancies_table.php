@@ -16,11 +16,13 @@ return new class extends Migration
         Schema::table('job_vacancies', function (Blueprint $table) {
             $table->string('uuid')
                 ->nullable(false)
-                ->after('experience');
+                ->after('experience')
+                ->unique();
 
             $table->string('url_token')
                 ->nullable(false)
-                ->after('uuid');
+                ->after('uuid')
+                ->unique();
 
         });
     }

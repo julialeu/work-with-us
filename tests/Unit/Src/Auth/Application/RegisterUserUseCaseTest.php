@@ -8,12 +8,14 @@ use WorkWithUs\Auth\Application\UserWithSameEmailExistException;
 use WorkWithUs\Auth\Domain\Entity\User;
 use WorkWithUs\Auth\Domain\Service\HashPasswordService;
 use WorkWithUs\Auth\Infrastructure\Repository\UsersRepository;
+use WorkWithUs\Auth\Infrastructure\Service\AuthenticateUserService;
 
 class RegisterUserUseCaseTest extends TestCase
 {
     private RegisterUserUseCase $sut;
     private UsersRepository $usersRepository;
     private HashPasswordService $hashPasswordService;
+    private AuthenticateUserService $authenticateUserService;
 
     protected function setUp(): void
     {
@@ -21,10 +23,12 @@ class RegisterUserUseCaseTest extends TestCase
 
         $this->usersRepository = $this->createMock(UsersRepository::class);
         $this->hashPasswordService = $this->createMock(HashPasswordService::class);
+        $this->authenticateUserService = $this->createMock(AuthenticateUserService::class);
 
         $this->sut = new RegisterUserUseCase(
             $this->usersRepository,
-            $this->hashPasswordService
+            $this->hashPasswordService,
+            $this->authenticateUserService
         );
     }
 
@@ -58,12 +62,26 @@ class RegisterUserUseCaseTest extends TestCase
             ->method('createUser')
             ->with($user);
 
-        $this->sut->execute(
+        $credentials = [
+            'email' => 'gato@gmail.com',
+            'password' => '1234'
+        ];
+        $this->authenticateUserService
+            ->expects(self::once())
+            ->method('login')
+            ->with($credentials)
+            ->willReturn('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0L2FwaS9hdXRoL2xvZ2luIiwiaWF0IjoxNjQ3MTk4NjA3LCJleHAiOjE2NDczNzE0MDcsIm5iZiI6MTY0NzE5ODYwNywianRpIjoibTd5Y3FaaG5ZcWZRaG1WUSIsInN1YiI6IjIiLCJwcnYiOiI0MWRmODgzNGYxYjk4ZjcwZWZhNjBhYWVkZWY0MjM0MTM3MDA2OTBjIn0.qA4ClBeLk6EMBn1gL8IW-5aNRyPaeFf56KQ9');
+
+        $response = $this->sut->execute(
             'gato@gmail.com',
                 '1234',
             'Gato',
             'Gato S.L.'
         );
+
+        $this->assertIsArray($response);
+
+
     }
 
     /**
@@ -89,7 +107,5 @@ class RegisterUserUseCaseTest extends TestCase
             'Gato',
             'Gato S.L.'
         );
-
-
     }
 }

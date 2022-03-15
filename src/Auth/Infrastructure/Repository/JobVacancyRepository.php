@@ -8,16 +8,17 @@ use WorkWithUs\Auth\Domain\Entity\JobVacancy;
 
 class JobVacancyRepository
 {
-
     public function createJobVacancy(JobVacancy $jobVacancy): JobVacancy
     {
         $userId = $jobVacancy->userId();
         $title = $jobVacancy->title();
         $company = $jobVacancy->company();
         $location = $jobVacancy->location();
-        $modality =$jobVacancy->modality();
-        $workingTime =$jobVacancy->workingTime();
-        $experience =$jobVacancy->experience();
+        $modality = $jobVacancy->modality();
+        $workingTime = $jobVacancy->workingTime();
+        $experience = $jobVacancy->experience();
+        $uuid = $jobVacancy->uuid();
+        $urlToken = $jobVacancy->urlToken();
 
         $now = Carbon::now()->format('Y-m-d H:i:s');
 
@@ -30,12 +31,14 @@ class JobVacancyRepository
                 'modality' => $modality,
                 'working_time' => $workingTime,
                 'experience' => $experience,
+                'uuid' => $uuid,
+                'url_token' => $urlToken,
                 'created_at' => $now,
                 'updated_at' => $now
             ]
         );
 
-        \Log::info('new job vacancy id: '  . $jobVacancyId);
+        \Log::info('new job vacancy id: ' . $jobVacancyId);
 
         $jobVacancy->setId($jobVacancyId);
 

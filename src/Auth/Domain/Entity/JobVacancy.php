@@ -13,6 +13,8 @@ class JobVacancy
     private string $modality;
     private string $workingTime;
     private string $experience;
+    private string $uuid;
+    private string $urlToken;
 
     public function id(): int
     {
@@ -107,6 +109,30 @@ class JobVacancy
     public function setExperience(string $experience): self
     {
         $this->experience = $experience;
+
+        return $this;
+    }
+
+    public function uuid(): string
+    {
+        return $this->uuid;
+    }
+
+    public function setUuid(string $uuid): self
+    {
+        $this->uuid = $uuid;
+
+        return $this;
+    }
+
+    public function urlToken(): string
+    {
+        return $this->urlToken;
+    }
+
+    public function setUrlToken(string $urlToken): self
+    {
+        $this->urlToken = $urlToken;
 
         return $this;
     }
