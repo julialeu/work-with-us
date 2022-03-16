@@ -44,4 +44,19 @@ class JobVacancyRepository
 
         return $jobVacancy;
     }
+
+    public function getAll(
+        int $userId
+    ): array
+    {
+        $query = "select title, company, location,
+                       modality, working_time,
+                       experience, created_at
+                from job_vacancies
+                where user_id = $userId";
+
+        $result = DB::select($query);
+
+        return $result;
+    }
 }
