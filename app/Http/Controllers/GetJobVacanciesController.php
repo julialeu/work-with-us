@@ -6,6 +6,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use WorkWithUs\Auth\Application\GetJobVacanciesUseCase;
 
+
+
 class GetJobVacanciesController extends Controller
 {
         public function __invoke(
@@ -13,7 +15,9 @@ class GetJobVacanciesController extends Controller
             GetJobVacanciesUseCase $getJobVacanciesUseCase
         ): JsonResponse
         {
-            $data = $getJobVacanciesUseCase->execute();
+            $numPage = $request->get('numPage');
+
+            $data = $getJobVacanciesUseCase->execute($numPage);
 
             return new JsonResponse($data);
         }

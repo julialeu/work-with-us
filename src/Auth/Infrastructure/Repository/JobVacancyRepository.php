@@ -46,14 +46,20 @@ class JobVacancyRepository
     }
 
     public function getAll(
-        int $userId
-    ): array
-    {
+        int $pageNumber,
+        int $userId,
+        int $resultsPerPage
+    ): array {
+
+        $offset = ($resultsPerPage * $pageNumber) - $resultsPerPage;
+
         $query = "select title, company, location,
                        modality, working_time,
-                       experience, created_at
+                       experience, uuid, created_at
                 from job_vacancies
                 where user_id = $userId";
+
+        $query = $query . " limit " . $limit . " OFFSET " . $offset;
 
         $result = DB::select($query);
 

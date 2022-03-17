@@ -5,6 +5,8 @@ namespace WorkWithUs\Auth\Domain\Entity;
 
 class JobVacancy
 {
+    public const NUM_JOB_VACANCIES_PER_PAGE = 4;
+
     private int $id;
     private int $userId;
     private string $title;
