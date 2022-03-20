@@ -38,14 +38,12 @@ class JobVacancyRepository
             ]
         );
 
-        \Log::info('new job vacancy id: ' . $jobVacancyId);
-
         $jobVacancy->setId($jobVacancyId);
 
         return $jobVacancy;
     }
 
-    public function getAll(
+    public function getJobVacanciesByUserIdPaginated(
         int $pageNumber,
         int $userId,
         int $resultsPerPage
@@ -53,16 +51,25 @@ class JobVacancyRepository
 
         $offset = ($resultsPerPage * $pageNumber) - $resultsPerPage;
 
-        $query = "select title, company, location,
+        $query = "select user_id, title, company, location,
                        modality, working_time,
                        experience, uuid, created_at
                 from job_vacancies
                 where user_id = $userId";
 
-        $query = $query . " limit " . $limit . " OFFSET " . $offset;
-
+        $query = $query . " limit " . $resultsPerPage . " OFFSET " . $offset;
         $result = DB::select($query);
 
         return $result;
+    }
+
+    public function countJobVacanciesByUserId(int $userId): int
+    {
+        $query = "select count(id) as total from job_vacancies where user_id = $userId";
+        $result = DB::select($query);
+
+        $numItems = $result[0]->total;
+
+        return $numItems;
     }
 }

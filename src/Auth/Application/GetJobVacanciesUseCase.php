@@ -26,21 +26,21 @@ class GetJobVacanciesUseCase
         $userId = $user->id();
         $resultsPerPage = JobVacancy::NUM_JOB_VACANCIES_PER_PAGE;
 
-        $jobVacancies = $this->jobVacancyRepository->getAll(
+        $jobVacancies = $this->jobVacancyRepository->getJobVacanciesByUserIdPaginated(
             $numPage,
             $userId,
             $resultsPerPage
         );
 
-        // TODO. contar el número de items de ese usuario
-        // TODO el resultado dividirlo por el número de ofertas por página
-        // TODO eso redondearlo (eso es el número de páginas que hay. Hay que devolver ese dato
+        $numJobVacanciesUser = $this->jobVacancyRepository->countJobVacanciesByUserId($userId);
+
+        $totalNumPages = ceil($numJobVacanciesUser / $resultsPerPage);
 
         $data = [
             'items' => $jobVacancies,
             'numPage' => $numPage,
             'resultsPerPage' => $resultsPerPage,
-            'totalPages' => 2,
+            'totalPages' => $totalNumPages,
         ];
 
         return $data;
