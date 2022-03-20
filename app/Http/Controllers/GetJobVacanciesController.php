@@ -15,7 +15,7 @@ class GetJobVacanciesController extends Controller
             GetJobVacanciesUseCase $getJobVacanciesUseCase
         ): JsonResponse
         {
-            $numPage = $request->get('numPage');
+            $numPage = $request->get('numPage', 1);
 
             $data = $getJobVacanciesUseCase->execute($numPage);
 
