@@ -48,6 +48,7 @@ class CreateJobVacancyUseCaseTest extends TestCase
         $jobVacancy = (new JobVacancy())
             ->setUserId(2)
             ->setTitle('Trainee front-end')
+            ->setDescription('Trainee front-end')
             ->setCompany('Cocacola')
             ->setLocation('Pamplona')
             ->setModality('on_site')
@@ -63,6 +64,7 @@ class CreateJobVacancyUseCaseTest extends TestCase
 
         $this->sut->execute(
             2,
+            'Trainee front-end',
             'Trainee front-end',
             'Cocacola',
             'Pamplona',

@@ -26,6 +26,7 @@ class CreateJobVacancyUseCase
     public function execute(
         int $userId,
         string $title,
+        string $description,
         string $company,
         string $location,
         string $modality,
@@ -38,6 +39,7 @@ class CreateJobVacancyUseCase
         $jobVacancy = (new JobVacancy())
             ->setUserId($userId)
             ->setTitle($title)
+            ->setDescription($description)
             ->setCompany($company)
             ->setLocation($location)
             ->setModality($modality)

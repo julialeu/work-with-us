@@ -10,6 +10,7 @@ class JobVacancy
     private int $id;
     private int $userId;
     private string $title;
+    private string $description;
     private string $company;
     private string $location;
     private string $modality;
@@ -51,6 +52,18 @@ class JobVacancy
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function description(): string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

@@ -12,6 +12,7 @@ class JobVacancyRepository
     {
         $userId = $jobVacancy->userId();
         $title = $jobVacancy->title();
+        $description = $jobVacancy->description();
         $company = $jobVacancy->company();
         $location = $jobVacancy->location();
         $modality = $jobVacancy->modality();
@@ -26,6 +27,7 @@ class JobVacancyRepository
             [
                 'user_id' => $userId,
                 'title' => $title,
+                'description' => $description,
                 'company' => $company,
                 'location' => $location,
                 'modality' => $modality,
@@ -51,7 +53,7 @@ class JobVacancyRepository
 
         $offset = ($resultsPerPage * $pageNumber) - $resultsPerPage;
 
-        $query = "select user_id, title, company, location,
+        $query = "select id, title, description, company, location,
                        modality, working_time,
                        experience, uuid, created_at
                 from job_vacancies
@@ -60,6 +62,8 @@ class JobVacancyRepository
         $query = $query . " limit " . $resultsPerPage . " OFFSET " . $offset;
         $result = DB::select($query);
 
+        // Aquí queremos devolver un array de objetos job vacancy.
+        //
         return $result;
     }
 
