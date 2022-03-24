@@ -45,6 +45,12 @@ class JobVacancyRepository
         return $jobVacancy;
     }
 
+    /**
+     * @param int $pageNumber
+     * @param int $userId
+     * @param int $resultsPerPage
+     * @return JobVacancy[]
+     */
     public function getJobVacanciesByUserIdPaginated(
         int $pageNumber,
         int $userId,
@@ -62,9 +68,27 @@ class JobVacancyRepository
         $query = $query . " limit " . $resultsPerPage . " OFFSET " . $offset;
         $result = DB::select($query);
 
-        // Aquí queremos devolver un array de objetos job vacancy.
-        //
-        return $result;
+        $jobVacancies = [];
+
+        foreach ($result as $resultItem) {
+            $jobVacancy = new JobVacancy();
+            $jobVacancy->setId($resultItem->id);
+            $jobVacancy->setTitle($resultItem->title);
+            $jobVacancy->setDescription($resultItem->description);
+            $jobVacancy->setCompany($resultItem->company);
+            $jobVacancy->setLocation($resultItem->location);
+            $jobVacancy->setModality($resultItem->modality);
+            $jobVacancy->setWorkingTime($resultItem->working_time);
+            $jobVacancy->setExperience($resultItem->experience);
+            $jobVacancy->setUuid($resultItem->uuid);
+
+            $createdAt = new Carbon($resultItem->created_at);
+            $jobVacancy->setCreatedAt($createdAt);
+
+            $jobVacancies[] = $jobVacancy;
+        }
+
+        return $jobVacancies;
     }
 
     public function countJobVacanciesByUserId(int $userId): int

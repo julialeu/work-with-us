@@ -2,6 +2,7 @@
 
 namespace WorkWithUs\Auth\Domain\Entity;
 
+use Carbon\Carbon;
 
 class JobVacancy
 {
@@ -10,7 +11,7 @@ class JobVacancy
     private int $id;
     private int $userId;
     private string $title;
-    private string $description;
+    private ?string $description;
     private string $company;
     private string $location;
     private string $modality;
@@ -18,6 +19,7 @@ class JobVacancy
     private string $experience;
     private string $uuid;
     private string $urlToken;
+    private Carbon $createdAt;
 
     public function id(): int
     {
@@ -56,7 +58,7 @@ class JobVacancy
         return $this;
     }
 
-    public function description(): string
+    public function description(): ?string
     {
         return $this->description;
     }
@@ -148,6 +150,18 @@ class JobVacancy
     public function setUrlToken(string $urlToken): self
     {
         $this->urlToken = $urlToken;
+
+        return $this;
+    }
+
+    public function createdAt(): Carbon
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(Carbon $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

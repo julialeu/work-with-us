@@ -2,6 +2,7 @@
 
 namespace WorkWithUs\Auth\Application;
 
+use Carbon\Carbon;
 use WorkWithUs\Auth\Domain\Entity\JobVacancy;
 use WorkWithUs\Auth\Domain\Service\GetAuthenticatedUserService;
 use WorkWithUs\Auth\Infrastructure\Repository\JobVacancyRepository;
@@ -36,8 +37,30 @@ class GetJobVacanciesUseCase
 
         $totalNumPages = ceil($numJobVacanciesUser / $resultsPerPage);
 
+        $dataItems = [];
+
+        foreach ($jobVacancies as $jobVacancy) {
+
+            $now = Carbon::now()->format('Y-m-d H:i:s');
+
+            $item = [
+                'id' => $jobVacancy->id(),
+                'title' => $jobVacancy->title(),
+                'description' => $jobVacancy->description(),
+                'company' => $jobVacancy->company(),
+                'location' => $jobVacancy->location(),
+                'modality' => $jobVacancy->modality(),
+                'working_time' => $jobVacancy->workingTime(),
+                'experience' => $jobVacancy->experience(),
+                'uuid' => $jobVacancy->uuid(),
+                'created' => $now,
+            ];
+
+            $dataItems[] = $item;
+        }
+
         $data = [
-            'items' => $jobVacancies,
+            'items' => $dataItems,
             'numPage' => $numPage,
             'resultsPerPage' => $resultsPerPage,
             'totalPages' => $totalNumPages,
