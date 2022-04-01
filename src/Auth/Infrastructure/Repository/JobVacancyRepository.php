@@ -100,4 +100,27 @@ class JobVacancyRepository
 
         return $numItems;
     }
+
+    public function findByUuid(string $uuid): JobVacancy
+    {
+        $query = "select * from job_vacancies where uuid = '$uuid'";
+        $result = DB::select($query);
+        $item = $result[0];
+
+        $jobVacancy = new JobVacancy();
+        $jobVacancy->setId($item->id);
+        $jobVacancy->setTitle($item->title);
+        $jobVacancy->setDescription($item->description);
+        $jobVacancy->setCompany($item->company);
+        $jobVacancy->setLocation($item->location);
+        $jobVacancy->setModality($item->modality);
+        $jobVacancy->setWorkingTime($item->working_time);
+        $jobVacancy->setExperience($item->experience);
+        $jobVacancy->setUuid($item->uuid);
+
+        $createdAt = new Carbon($item->created_at);
+        $jobVacancy->setCreatedAt($createdAt);
+
+        return $jobVacancy;
+    }
 }

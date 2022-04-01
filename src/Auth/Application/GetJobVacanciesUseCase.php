@@ -40,9 +40,6 @@ class GetJobVacanciesUseCase
         $dataItems = [];
 
         foreach ($jobVacancies as $jobVacancy) {
-
-            $now = Carbon::now()->format('Y-m-d H:i:s');
-
             $item = [
                 'id' => $jobVacancy->id(),
                 'title' => $jobVacancy->title(),
@@ -53,7 +50,7 @@ class GetJobVacanciesUseCase
                 'working_time' => $jobVacancy->workingTime(),
                 'experience' => $jobVacancy->experience(),
                 'uuid' => $jobVacancy->uuid(),
-                'created' => $now,
+                'created' => $jobVacancy->createdAt()->format('Y-m-d H:i:s')
             ];
 
             $dataItems[] = $item;
