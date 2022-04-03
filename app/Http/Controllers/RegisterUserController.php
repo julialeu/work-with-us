@@ -9,7 +9,6 @@ use Throwable;
 use WorkWithUs\Auth\Application\RegisterUserUseCase;
 use WorkWithUs\Auth\Application\UserWithSameEmailExistException;
 
-
 class RegisterUserController extends Controller
 {
     public function __invoke(

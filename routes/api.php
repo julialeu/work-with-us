@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CreateJobVacancyController;
+use App\Http\Controllers\EditJobVacancyController;
 use App\Http\Controllers\GetJobVacanciesController;
 use App\Http\Controllers\GetJobVacancyController;
 use App\Http\Controllers\GetUserProfileController;
@@ -44,5 +45,7 @@ Route::group([
     Route::get('job-vacancies', GetJobVacanciesController::class);
 
     Route::get('job-vacancy', GetJobVacancyController::class);
+
+    Route::patch('job-vacancy', EditJobVacancyController::class);
 
 });

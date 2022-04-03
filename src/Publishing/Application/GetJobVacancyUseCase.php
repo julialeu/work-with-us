@@ -1,8 +1,8 @@
 <?php
 
-namespace WorkWithUs\Auth\Application;
+namespace WorkWithUs\Publishing\Application;
 
-use WorkWithUs\Auth\Infrastructure\Repository\JobVacancyRepository;
+use WorkWithUs\Publishing\Infrastructure\Repository\JobVacancyRepository;
 
 class GetJobVacancyUseCase
 {

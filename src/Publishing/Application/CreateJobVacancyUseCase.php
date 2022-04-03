@@ -1,11 +1,11 @@
 <?php
 
-namespace WorkWithUs\Auth\Application;
+namespace WorkWithUs\Publishing\Application;
 
 use WorkWithUs\Auth\Domain\Entity\JobVacancy;
 use WorkWithUs\Auth\Domain\Service\GenerateRandomStringService;
 use WorkWithUs\Auth\Domain\Service\GenerateUuidService;
-use WorkWithUs\Auth\Infrastructure\Repository\JobVacancyRepository;
+use WorkWithUs\Publishing\Infrastructure\Repository\JobVacancyRepository;
 
 class CreateJobVacancyUseCase
 {
