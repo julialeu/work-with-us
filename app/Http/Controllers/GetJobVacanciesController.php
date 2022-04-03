@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use WorkWithUs\Auth\Application\GetJobVacanciesUseCase;
+use WorkWithUs\Publishing\Application\GetJobVacanciesUseCase;
 
 class GetJobVacanciesController extends Controller
 {

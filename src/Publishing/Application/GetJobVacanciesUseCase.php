@@ -1,11 +1,11 @@
 <?php
 
-namespace WorkWithUs\Auth\Application;
+namespace WorkWithUs\Publishing\Application;
 
 use Carbon\Carbon;
 use WorkWithUs\Auth\Domain\Entity\JobVacancy;
 use WorkWithUs\Auth\Domain\Service\GetAuthenticatedUserService;
-use WorkWithUs\Auth\Infrastructure\Repository\JobVacancyRepository;
+use WorkWithUs\Publishing\Infrastructure\Repository\JobVacancyRepository;
 
 class GetJobVacanciesUseCase
 {

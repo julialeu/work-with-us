@@ -1,6 +1,6 @@
 <?php
 
-namespace WorkWithUs\Auth\Infrastructure\Repository;
+namespace WorkWithUs\Publishing\Infrastructure\Repository;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -105,10 +105,12 @@ class JobVacancyRepository
     {
         $query = "select * from job_vacancies where uuid = '$uuid'";
         $result = DB::select($query);
+        // Item es de tipo stdClass
         $item = $result[0];
 
         $jobVacancy = new JobVacancy();
         $jobVacancy->setId($item->id);
+        $jobVacancy->setUserId($item->user_id);
         $jobVacancy->setTitle($item->title);
         $jobVacancy->setDescription($item->description);
         $jobVacancy->setCompany($item->company);
@@ -122,5 +124,24 @@ class JobVacancyRepository
         $jobVacancy->setCreatedAt($createdAt);
 
         return $jobVacancy;
+    }
+
+    public function editJobVacancy(JobVacancy $jobVacancy): void
+    {
+        $title = $jobVacancy->title();
+        $description = $jobVacancy->description();
+        $company = $jobVacancy->company();
+        $location = $jobVacancy->location();
+        $modality = $jobVacancy->modality();
+        $workingTime = $jobVacancy->workingTime();
+        $experience = $jobVacancy->experience();
+        $uuid = $jobVacancy->uuid();
+
+        $query = "update job_vacancies
+        set description = '$description', company = '$company',
+            location = '$location', modality = '$modality', working_time = '$workingTime',
+            experience = '$experience', title = '$title' where uuid = '$uuid'";
+
+        DB::update($query);
     }
 }

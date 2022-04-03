@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Unit\Src\Auth\Application;
+namespace Tests\Unit\Src\Publishing\Application;
 
 use Tests\TestCase;
-use WorkWithUs\Auth\Application\CreateJobVacancyUseCase;
 use WorkWithUs\Auth\Domain\Entity\JobVacancy;
 use WorkWithUs\Auth\Domain\Service\GenerateRandomStringService;
 use WorkWithUs\Auth\Domain\Service\GenerateUuidService;
 use WorkWithUs\Auth\Infrastructure\Repository\JobVacancyRepository;
+use WorkWithUs\Publishing\Application\CreateJobVacancyUseCase;
 
 class CreateJobVacancyUseCaseTest extends TestCase
 {

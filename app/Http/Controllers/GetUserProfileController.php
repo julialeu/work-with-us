@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Log;
 use Throwable;
 use WorkWithUs\Auth\Domain\Service\GetAuthenticatedUserService;
 
-
 class GetUserProfileController extends Controller
 {
     private GetAuthenticatedUserService $getAuthenticatedUserService;
@@ -42,6 +41,5 @@ class GetUserProfileController extends Controller
             );
         }
     }
-
 }
 
