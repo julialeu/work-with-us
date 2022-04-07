@@ -6,8 +6,9 @@ use Tests\TestCase;
 use WorkWithUs\Auth\Domain\Entity\JobVacancy;
 use WorkWithUs\Auth\Domain\Service\GenerateRandomStringService;
 use WorkWithUs\Auth\Domain\Service\GenerateUuidService;
-use WorkWithUs\Auth\Infrastructure\Repository\JobVacancyRepository;
 use WorkWithUs\Publishing\Application\CreateJobVacancyUseCase;
+use WorkWithUs\Publishing\Domain\ValueObject\JobVacancyStatus;
+use WorkWithUs\Publishing\Infrastructure\Repository\JobVacancyRepository;
 
 class CreateJobVacancyUseCaseTest extends TestCase
 {
@@ -45,8 +46,11 @@ class CreateJobVacancyUseCaseTest extends TestCase
             ->method('generate')
             ->willReturn('aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee');
 
+        $jobVacancyStatus = new JobVacancyStatus(JobVacancyStatus::PUBLISHED);
+
         $jobVacancy = (new JobVacancy())
             ->setUserId(2)
+            ->setJobVacancyStatus($jobVacancyStatus)
             ->setTitle('Trainee front-end')
             ->setDescription('Trainee front-end')
             ->setCompany('Cocacola')

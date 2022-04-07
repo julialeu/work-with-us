@@ -3,6 +3,7 @@
 namespace WorkWithUs\Auth\Domain\Entity;
 
 use Carbon\Carbon;
+use WorkWithUs\Publishing\Domain\ValueObject\JobVacancyStatus;
 
 class JobVacancy
 {
@@ -10,6 +11,7 @@ class JobVacancy
 
     private int $id;
     private int $userId;
+    private JobVacancyStatus $jobVacancyStatus;
     private string $title;
     private ?string $description;
     private string $company;
@@ -45,6 +47,17 @@ class JobVacancy
         return $this;
     }
 
+    public function jobVacancyStatus(): JobVacancyStatus
+    {
+        return $this->jobVacancyStatus;
+    }
+
+    public function setJobVacancyStatus(JobVacancyStatus $jobVacancyStatus): self
+    {
+        $this->jobVacancyStatus = $jobVacancyStatus;
+
+        return $this;
+    }
 
     public function title(): string
     {

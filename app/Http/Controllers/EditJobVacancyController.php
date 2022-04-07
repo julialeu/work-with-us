@@ -14,6 +14,7 @@ class EditJobVacancyController extends Controller
     ): JsonResponse {
         $uuid = $request->get('uuid');
         $title = $request->get('title');
+        \Log::info($title);
         $description = $request->get('description');
         $company = $request->get('company');
         $location = $request->get('location');

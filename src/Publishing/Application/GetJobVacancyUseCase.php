@@ -19,6 +19,7 @@ class GetJobVacancyUseCase
 
         $item = [
             'id' => $jobVacancy->id(),
+            'status' => $jobVacancy->jobVacancyStatus(),
             'title' => $jobVacancy->title(),
             'description' => $jobVacancy->description(),
             'company' => $jobVacancy->company(),

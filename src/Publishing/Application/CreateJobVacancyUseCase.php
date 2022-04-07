@@ -5,6 +5,7 @@ namespace WorkWithUs\Publishing\Application;
 use WorkWithUs\Auth\Domain\Entity\JobVacancy;
 use WorkWithUs\Auth\Domain\Service\GenerateRandomStringService;
 use WorkWithUs\Auth\Domain\Service\GenerateUuidService;
+use WorkWithUs\Publishing\Domain\ValueObject\JobVacancyStatus;
 use WorkWithUs\Publishing\Infrastructure\Repository\JobVacancyRepository;
 
 class CreateJobVacancyUseCase
@@ -36,8 +37,11 @@ class CreateJobVacancyUseCase
         $urlToken = $this->generateRandomStringService->generateRandomString(11);
         $uuid = $this->generateUuidService->generate();
 
+        $jobVacancyStatus =  JobVacancyStatus::published();
+
         $jobVacancy = (new JobVacancy())
             ->setUserId($userId)
+            ->setJobVacancyStatus($jobVacancyStatus)
             ->setTitle($title)
             ->setDescription($description)
             ->setCompany($company)
@@ -49,6 +53,5 @@ class CreateJobVacancyUseCase
             ->setUuid($uuid);
 
         $this->jobVacancyRepository->createJobVacancy($jobVacancy);
-
     }
 }

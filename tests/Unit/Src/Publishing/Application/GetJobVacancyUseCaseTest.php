@@ -4,8 +4,8 @@ namespace Tests\Unit\Src\Publishing\Application;
 
 use Tests\TestCase;
 use WorkWithUs\Auth\Domain\Entity\JobVacancy;
-use WorkWithUs\Auth\Infrastructure\Repository\JobVacancyRepository;
 use WorkWithUs\Publishing\Application\GetJobVacancyUseCase;
+use WorkWithUs\Publishing\Infrastructure\Repository\JobVacancyRepository;
 
 class GetJobVacancyUseCaseTest extends TestCase
 {
