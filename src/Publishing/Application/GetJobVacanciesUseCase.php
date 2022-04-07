@@ -42,6 +42,7 @@ class GetJobVacanciesUseCase
         foreach ($jobVacancies as $jobVacancy) {
             $item = [
                 'id' => $jobVacancy->id(),
+                'status' => $jobVacancy->jobVacancyStatus()->getValue(),
                 'title' => $jobVacancy->title(),
                 'description' => $jobVacancy->description(),
                 'company' => $jobVacancy->company(),

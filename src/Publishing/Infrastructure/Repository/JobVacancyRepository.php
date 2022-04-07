@@ -5,12 +5,14 @@ namespace WorkWithUs\Publishing\Infrastructure\Repository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use WorkWithUs\Auth\Domain\Entity\JobVacancy;
+use WorkWithUs\Publishing\Domain\ValueObject\JobVacancyStatus;
 
 class JobVacancyRepository
 {
     public function createJobVacancy(JobVacancy $jobVacancy): JobVacancy
     {
         $userId = $jobVacancy->userId();
+        $jobVacancyStatus = $jobVacancy->jobVacancyStatus();
         $title = $jobVacancy->title();
         $description = $jobVacancy->description();
         $company = $jobVacancy->company();
@@ -26,6 +28,7 @@ class JobVacancyRepository
         $jobVacancyId = DB::table('job_vacancies')->insertGetId(
             [
                 'user_id' => $userId,
+                'status' => $jobVacancyStatus->getValue(),
                 'title' => $title,
                 'description' => $description,
                 'company' => $company,
@@ -59,7 +62,7 @@ class JobVacancyRepository
 
         $offset = ($resultsPerPage * $pageNumber) - $resultsPerPage;
 
-        $query = "select id, title, description, company, location,
+        $query = "select id, status, title, description, company, location,
                        modality, working_time,
                        experience, uuid, created_at
                 from job_vacancies
@@ -71,8 +74,11 @@ class JobVacancyRepository
         $jobVacancies = [];
 
         foreach ($result as $resultItem) {
+            $jobVacancyStatus = new JobVacancyStatus($resultItem->status);
+
             $jobVacancy = new JobVacancy();
             $jobVacancy->setId($resultItem->id);
+            $jobVacancy->setJobVacancyStatus($jobVacancyStatus);
             $jobVacancy->setTitle($resultItem->title);
             $jobVacancy->setDescription($resultItem->description);
             $jobVacancy->setCompany($resultItem->company);
@@ -104,13 +110,16 @@ class JobVacancyRepository
     public function findByUuid(string $uuid): JobVacancy
     {
         $query = "select * from job_vacancies where uuid = '$uuid'";
+
         $result = DB::select($query);
         // Item es de tipo stdClass
         $item = $result[0];
 
+        $jobVacancyStatus = new JobVacancyStatus($item->status);
         $jobVacancy = new JobVacancy();
         $jobVacancy->setId($item->id);
         $jobVacancy->setUserId($item->user_id);
+        $jobVacancy->setJobVacancyStatus($jobVacancyStatus);
         $jobVacancy->setTitle($item->title);
         $jobVacancy->setDescription($item->description);
         $jobVacancy->setCompany($item->company);
@@ -128,6 +137,7 @@ class JobVacancyRepository
 
     public function editJobVacancy(JobVacancy $jobVacancy): void
     {
+        $jobVacancyStatus = $jobVacancy->jobVacancyStatus();
         $title = $jobVacancy->title();
         $description = $jobVacancy->description();
         $company = $jobVacancy->company();
@@ -140,7 +150,7 @@ class JobVacancyRepository
         $query = "update job_vacancies
         set description = '$description', company = '$company',
             location = '$location', modality = '$modality', working_time = '$workingTime',
-            experience = '$experience', title = '$title' where uuid = '$uuid'";
+            experience = '$experience', status = '$jobVacancyStatus', title = '$title' where uuid = '$uuid'";
 
         DB::update($query);
     }

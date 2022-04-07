@@ -16,13 +16,6 @@ class DummyController extends Controller
      */
     public function execute()
     {
-        $transformUserModelService = new TransformUserModelService(
-        );
-        $getAuthenticatedUserService = new GetAuthenticatedUserService(new TransformUserModelService());
-
-
-
         die('Hola');
     }
-
 }
