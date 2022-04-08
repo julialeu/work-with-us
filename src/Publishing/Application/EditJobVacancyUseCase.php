@@ -54,6 +54,6 @@ class EditJobVacancyUseCase
             $jobVacancy->setExperience($experience);
         }
 
-        $this->jobVacancyRepository->editJobVacancy($jobVacancy);
+        $this->jobVacancyRepository->updateJobVacancy($jobVacancy);
     }
 }

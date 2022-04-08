@@ -135,9 +135,9 @@ class JobVacancyRepository
         return $jobVacancy;
     }
 
-    public function editJobVacancy(JobVacancy $jobVacancy): void
+    public function updateJobVacancy(JobVacancy $jobVacancy): void
     {
-        $jobVacancyStatus = $jobVacancy->jobVacancyStatus();
+        $jobVacancyStatus = $jobVacancy->jobVacancyStatus()->getValue();
         $title = $jobVacancy->title();
         $description = $jobVacancy->description();
         $company = $jobVacancy->company();

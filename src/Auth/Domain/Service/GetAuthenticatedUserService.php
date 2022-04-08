@@ -3,6 +3,7 @@
 namespace WorkWithUs\Auth\Domain\Service;
 
 use WorkWithUs\Auth\Domain\Entity\User;
+use WorkWithUs\Auth\Domain\Exception\UserUnauthenticatedException;
 
 class GetAuthenticatedUserService
 {
@@ -14,11 +15,17 @@ class GetAuthenticatedUserService
         $this->transformUserModelService = $transformUserModelService;
     }
 
+    /**
+     * @return User
+     * @throws UserUnauthenticatedException
+     */
     public function execute(): User
     {
         $userModel = auth()->user();
-        $user = $this->transformUserModelService->transformUserModel($userModel);
+        if ($userModel === null) {
+            throw new UserUnauthenticatedException('User is not authenticated!!');
+        }
 
-        return $user;
+        return $this->transformUserModelService->transformUserModel($userModel);
     }
 }

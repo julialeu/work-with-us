@@ -5,6 +5,9 @@ use App\Http\Controllers\EditJobVacancyController;
 use App\Http\Controllers\GetJobVacanciesController;
 use App\Http\Controllers\GetJobVacancyController;
 use App\Http\Controllers\GetUserProfileController;
+use App\Http\Controllers\MarkJobVacancyAsPublishedController;
+use App\Http\Controllers\MarkJobVacancyAsUnpublishedController;
+use App\Http\Controllers\PleaseLoginController;
 use App\Http\Controllers\RegisterUserController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +34,7 @@ Route::group([
 
 ], function ($router) {
 
+    Route::get('please-login', PleaseLoginController::class)->name('pleaseLogin');
     Route::post('login', 'App\Http\Controllers\AuthController@login');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
@@ -38,14 +42,24 @@ Route::group([
 
     Route::post('register', RegisterUserController::class);
 
+    // TODO move to private api block and fix url in the frontend
     Route::get('profile', GetUserProfileController::class);
-
     Route::post('job-vacancy', CreateJobVacancyController::class);
-
     Route::get('job-vacancies', GetJobVacanciesController::class);
-
     Route::get('job-vacancy', GetJobVacancyController::class);
-
     Route::patch('job-vacancy', EditJobVacancyController::class);
+});
+
+
+Route::group([
+
+    'middleware' => 'private-api',
+    'prefix' => 'api/user'
+
+], function ($router) {
+
+
+    Route::patch('mark-job-vacancy-as-published', MarkJobVacancyAsPublishedController::class);
+    Route::patch('mark-job-vacancy-as-unpublished', MarkJobVacancyAsUnpublishedController::class);
 
 });

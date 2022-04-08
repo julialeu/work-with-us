@@ -13,4 +13,9 @@ final class JobVacancyStatus extends Enum
     {
         return new JobVacancyStatus(self::PUBLISHED);
     }
+
+    public static function unpublished(): JobVacancyStatus
+    {
+        return new JobVacancyStatus(self::UNPUBLISHED);
+    }
 }
