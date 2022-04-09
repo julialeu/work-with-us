@@ -11,10 +11,10 @@ class JobVacancy
 
     private int $id;
     private int $userId;
+    private int $companyId;
     private JobVacancyStatus $jobVacancyStatus;
     private string $title;
     private ?string $description;
-    private string $company;
     private string $location;
     private string $modality;
     private string $workingTime;
@@ -83,14 +83,14 @@ class JobVacancy
         return $this;
     }
 
-    public function company(): string
+    public function companyId(): int
     {
-        return $this->company;
+        return $this->companyId;
     }
 
-    public function setCompany(string $company): self
+    public function setCompanyId(int $companyId): self
     {
-        $this->company = $company;
+        $this->companyId = $companyId;
 
         return $this;
     }

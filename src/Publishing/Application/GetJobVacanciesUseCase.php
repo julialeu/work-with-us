@@ -45,7 +45,7 @@ class GetJobVacanciesUseCase
                 'status' => $jobVacancy->jobVacancyStatus()->getValue(),
                 'title' => $jobVacancy->title(),
                 'description' => $jobVacancy->description(),
-                'company' => $jobVacancy->company(),
+                'company_id' => $jobVacancy->companyId(),
                 'location' => $jobVacancy->location(),
                 'modality' => $jobVacancy->modality(),
                 'working_time' => $jobVacancy->workingTime(),

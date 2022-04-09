@@ -4,6 +4,7 @@ use App\Http\Controllers\CreateJobVacancyController;
 use App\Http\Controllers\EditJobVacancyController;
 use App\Http\Controllers\GetJobVacanciesController;
 use App\Http\Controllers\GetJobVacancyController;
+use App\Http\Controllers\GetMyCompaniesController;
 use App\Http\Controllers\GetUserProfileController;
 use App\Http\Controllers\MarkJobVacancyAsPublishedController;
 use App\Http\Controllers\MarkJobVacancyAsUnpublishedController;
@@ -61,5 +62,7 @@ Route::group([
 
     Route::patch('mark-job-vacancy-as-published', MarkJobVacancyAsPublishedController::class);
     Route::patch('mark-job-vacancy-as-unpublished', MarkJobVacancyAsUnpublishedController::class);
+
+    Route::get('my-companies', GetMyCompaniesController::class);
 
 });

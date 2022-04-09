@@ -28,7 +28,7 @@ class CreateJobVacancyUseCase
         int $userId,
         string $title,
         string $description,
-        string $company,
+        int $companyId,
         string $location,
         string $modality,
         string $workingTime,
@@ -37,14 +37,14 @@ class CreateJobVacancyUseCase
         $urlToken = $this->generateRandomStringService->generateRandomString(11);
         $uuid = $this->generateUuidService->generate();
 
-        $jobVacancyStatus =  JobVacancyStatus::published();
+        $jobVacancyStatus = JobVacancyStatus::unpublished();
 
         $jobVacancy = (new JobVacancy())
             ->setUserId($userId)
             ->setJobVacancyStatus($jobVacancyStatus)
             ->setTitle($title)
             ->setDescription($description)
-            ->setCompany($company)
+            ->setCompanyId($companyId)
             ->setLocation($location)
             ->setModality($modality)
             ->setWorkingTime($workingTime)
