@@ -23,13 +23,11 @@ class TransformUserModelServiceTest extends TestCase
         $userModel->email = 'gato@gmail.com';
         $userModel->name = 'Gato';
         $userModel->password = '1234';
-        $userModel->company = 'Hacendado';
 
         $actual = $this->sut->transformUserModel($userModel);
 
         $this->assertEquals('gato@gmail.com', $actual->email());
         $this->assertEquals('Gato', $actual->name());
         $this->assertEquals('1234', $actual->hashedPassword());
-        $this->assertEquals('Hacendado', $actual->company());
     }
 }

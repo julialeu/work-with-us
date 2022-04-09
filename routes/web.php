@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Site\ShowCompanyPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,11 @@ Route::get('/', function () {
 });
 
 Route::get('dummy', 'App\Http\Controllers\DummyController@execute');
+
+Route::get('{companySlug}', ShowCompanyPageController::class);
+
+
+
 
 include 'api.php';
 

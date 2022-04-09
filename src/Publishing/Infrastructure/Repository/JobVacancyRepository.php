@@ -15,7 +15,7 @@ class JobVacancyRepository
         $jobVacancyStatus = $jobVacancy->jobVacancyStatus();
         $title = $jobVacancy->title();
         $description = $jobVacancy->description();
-        $company = $jobVacancy->company();
+        $companyId = $jobVacancy->companyId();
         $location = $jobVacancy->location();
         $modality = $jobVacancy->modality();
         $workingTime = $jobVacancy->workingTime();
@@ -31,7 +31,7 @@ class JobVacancyRepository
                 'status' => $jobVacancyStatus->getValue(),
                 'title' => $title,
                 'description' => $description,
-                'company' => $company,
+                'company_id' => $companyId,
                 'location' => $location,
                 'modality' => $modality,
                 'working_time' => $workingTime,
@@ -62,7 +62,7 @@ class JobVacancyRepository
 
         $offset = ($resultsPerPage * $pageNumber) - $resultsPerPage;
 
-        $query = "select id, status, title, description, company, location,
+        $query = "select id, status, title, description, company_id, location,
                        modality, working_time,
                        experience, uuid, created_at
                 from job_vacancies
@@ -81,7 +81,7 @@ class JobVacancyRepository
             $jobVacancy->setJobVacancyStatus($jobVacancyStatus);
             $jobVacancy->setTitle($resultItem->title);
             $jobVacancy->setDescription($resultItem->description);
-            $jobVacancy->setCompany($resultItem->company);
+            $jobVacancy->setCompanyId($resultItem->company_id);
             $jobVacancy->setLocation($resultItem->location);
             $jobVacancy->setModality($resultItem->modality);
             $jobVacancy->setWorkingTime($resultItem->working_time);
@@ -118,11 +118,11 @@ class JobVacancyRepository
         $jobVacancyStatus = new JobVacancyStatus($item->status);
         $jobVacancy = new JobVacancy();
         $jobVacancy->setId($item->id);
+        $jobVacancy->setCompanyId($item->company_id);
         $jobVacancy->setUserId($item->user_id);
         $jobVacancy->setJobVacancyStatus($jobVacancyStatus);
         $jobVacancy->setTitle($item->title);
         $jobVacancy->setDescription($item->description);
-        $jobVacancy->setCompany($item->company);
         $jobVacancy->setLocation($item->location);
         $jobVacancy->setModality($item->modality);
         $jobVacancy->setWorkingTime($item->working_time);
@@ -140,7 +140,6 @@ class JobVacancyRepository
         $jobVacancyStatus = $jobVacancy->jobVacancyStatus()->getValue();
         $title = $jobVacancy->title();
         $description = $jobVacancy->description();
-        $company = $jobVacancy->company();
         $location = $jobVacancy->location();
         $modality = $jobVacancy->modality();
         $workingTime = $jobVacancy->workingTime();
@@ -148,7 +147,7 @@ class JobVacancyRepository
         $uuid = $jobVacancy->uuid();
 
         $query = "update job_vacancies
-        set description = '$description', company = '$company',
+        set description = '$description',
             location = '$location', modality = '$modality', working_time = '$workingTime',
             experience = '$experience', status = '$jobVacancyStatus', title = '$title' where uuid = '$uuid'";
 

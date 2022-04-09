@@ -29,18 +29,17 @@ class UsersRepository
     public function createUser(User $user): void
     {
         $name = $user->name();
-        $company = $user->company();
         $email = $user->email();
-        $password =$user->hashedPassword();
+        $password = $user->hashedPassword();
 
         $now = Carbon::now()->format('Y-m-d H:i:s');
 
         $query = "
-        INSERT INTO users (name, company, email, password, created_at, updated_at)
-        VALUES ('$name', '$company', '$email', '$password', '$now', '$now');
+        INSERT INTO users (name, email, password, created_at, updated_at)
+        VALUES ('$name', '$email', '$password', '$now', '$now');
         ";
 
-        DB::statement( $query );
+        DB::statement($query);
 
         //var_dump($query);
     }

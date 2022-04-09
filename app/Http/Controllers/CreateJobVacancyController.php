@@ -20,7 +20,7 @@ class CreateJobVacancyController extends Controller
         $title = $request->get('title');
         $description = $request->get('description');
 
-        $company = $request->get('company');
+        $companyId = $request->get('companyId');
         $location = $request->get('location');
         $modality = $request->get('modality');
         $workingTime = $request->get('workingTime');
@@ -30,7 +30,7 @@ class CreateJobVacancyController extends Controller
             $userId,
             $title,
             $description,
-            $company,
+            $companyId,
             $location,
             $modality,
             $workingTime,

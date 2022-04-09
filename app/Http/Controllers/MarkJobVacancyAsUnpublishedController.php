@@ -9,7 +9,6 @@ use WorkWithUs\Publishing\Application\MarkJobVacancyAsUnpublishedUseCase;
 
 class MarkJobVacancyAsUnpublishedController extends Controller
 {
-
     public function __invoke(
         MarkJobVacancyAsUnPublishedUseCase $markJobVacancyAsUnpublishedUseCase,
         Request $request,
