@@ -34,4 +34,20 @@ class CompanyRepository
 
         return $companies;
     }
+
+    public function getBySlug(string $companySlug): Company
+    {
+        $query = "select * from companies where slug = \"$companySlug\"";
+
+        $result = DB::select($query);
+        $item = $result[0];
+
+        $result = new Company();
+        $result->setId($item->id);
+        $result->setSlug($item->slug);
+        $result->setName($item->name);
+        $result->setCreatedAt(new Carbon($item->created_at));
+
+        return $result;
+    }
 }
