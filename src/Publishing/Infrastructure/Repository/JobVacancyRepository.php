@@ -153,4 +153,35 @@ class JobVacancyRepository
 
         DB::update($query);
     }
+
+    public function findPublishedByCompanyId(int $companyId): array
+    {
+        $query = "select * from job_vacancies where company_id = $companyId and status = 'published'";
+        $result = DB::select($query);
+
+        $jobVacancies = [];
+
+        foreach ($result as $resultItem) {
+            $jobVacancyStatus = new JobVacancyStatus($resultItem->status);
+
+            $jobVacancy = new JobVacancy();
+            $jobVacancy->setId($resultItem->id);
+            $jobVacancy->setJobVacancyStatus($jobVacancyStatus);
+            $jobVacancy->setTitle($resultItem->title);
+            $jobVacancy->setDescription($resultItem->description);
+            $jobVacancy->setCompanyId($resultItem->company_id);
+            $jobVacancy->setLocation($resultItem->location);
+            $jobVacancy->setModality($resultItem->modality);
+            $jobVacancy->setWorkingTime($resultItem->working_time);
+            $jobVacancy->setExperience($resultItem->experience);
+            $jobVacancy->setUuid($resultItem->uuid);
+
+            $createdAt = new Carbon($resultItem->created_at);
+            $jobVacancy->setCreatedAt($createdAt);
+
+            $jobVacancies[] = $jobVacancy;
+        }
+
+        return $jobVacancies;
+    }
 }
