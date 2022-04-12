@@ -21,11 +21,9 @@ class ShowCompanyPageController
         $company = $companyRepository->getBySlug($companySlug);
         $jobVacancies = $jobVacancyRepository->findPublishedByCompanyId($company->id());
 
-
-
         return view('company-page', [
-            'companyName' => $company->name()
-            //'jobVacancies' => $jobVacancies
+            'companyName' => $company->name(),
+            'jobVacancies' => $jobVacancies
         ]);
     }
 }

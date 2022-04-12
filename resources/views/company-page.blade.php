@@ -18,19 +18,21 @@
 <div class="main">
     <h1>Careers at Zara</h1>
 
-    <div>
+    <div class="introduction">
         <br><br>
-        <p>Wallbox is a global company, dedicated to changing the way the world uses energy in the electric vehicle
-            industry. We create smart charging systems that combine innovative technology with outstanding design and
-            manage
-            the communication between vehicle, grid, buildng, and charger.
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of Lorem Ipsum.
         </p>
 
-        <p>Wallbox offers a complete portfolio of charging and energy management and public chargingsolutions for
-            residential and semi-public globally.</p>
+        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
+            literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
+            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem
+            Ipsum passage, and going through the cites of the word in classical literature</p>
 
-        <p>Founded in 2015, with headquarters in Barcelona, Wallbox’s mission is to facilitate the adoption of electric
-            vehicles today to make more sustainable use of energy tomorrow.</p>
     </div>
 
     <br><br><br>
@@ -42,40 +44,37 @@
         <div class="job-vacancies">
 
             <h3>Job Openings</h3>
+
             <ul class="list">
+
                 <li>
-                    <a class="job-block" href="hola">
+                    @foreach ($jobVacancies as $jobVacancy)
 
+                        <?php
+                        $date = $jobVacancy->createdAt();
+                        $now = new Carbon\Carbon();
+                        $diffDays = $date->diffInDays($now);
+                        ?>
 
-                        <div class="item">
-                            <small class="date">
-                                Posted 3 days ago
-                            </small>
-                            <h3 class="title">NodeJS Backend Software Engineer</h3>
-                            <div>
-                                <span class="modality">Remote</span>
+                        <a class="job-block" href="hola">
+
+                            <div class="item">
+
+                                @if ($diffDays === 1)
+                                    <small class="date">Hace {{ $diffDays}} día</small>
+                                @else
+                                    <small class="date">Hace {{ $diffDays}} días</small>
+
+                                @endif
+                                <h3 class="title">{{ $jobVacancy->title() }}</h3>
+                                <div>
+                                    <span class="modality">{{ $jobVacancy->modality() }}</span>
+                                </div>
+                                <span class="tag location">{{ $jobVacancy->location() }}</span>
+                                <span class="tag working_time">· {{ $jobVacancy->workingTime() }}</span>
                             </div>
-                            <span class="location">Spain</span>
-                            <span class="working_time">Full time</span>
-                        </div>
-
-                    </a>
+                    @endforeach
                 </li>
-                <li>
-                    <div class="item">
-                        <small class="date">
-                            Posted 3 days ago
-                        </small>
-                        <h3 class="title">NodeJS Backend Software Engineer</h3>
-                        <div>
-                            <span class="modality">Remote</span>
-                        </div>
-                        <span class="location">Spain</span>
-                        <span class="working_time">Full time</span>
-                    </div>
-
-                </li>
-
             </ul>
 
         </div>
