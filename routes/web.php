@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Site\ShowCompanyPageController;
+
+use App\Http\Controllers\Site\ShowJobVacancyPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,8 +24,7 @@ Route::get('dummy', 'App\Http\Controllers\DummyController@execute');
 
 Route::get('{companySlug}', ShowCompanyPageController::class);
 
-
-
+Route::get('{companySlug}/{urlToken}', ShowJobVacancyPageController::class);
 
 include 'api.php';
 
