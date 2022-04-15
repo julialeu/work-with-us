@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('company');
             $table->string('location');
             $table->enum('modality', ['on_site', 'remote', 'hybrid']);
-            $table->string('working_time');
+            $table->enum('working_time', ['full_time', 'part_time'])->nullable(false);
             $table->enum('experience', ['trainee', 'junior', 'senior']);
             $table->timestamps();
         });

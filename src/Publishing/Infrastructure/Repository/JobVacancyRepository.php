@@ -175,6 +175,7 @@ class JobVacancyRepository
             $jobVacancy->setWorkingTime($resultItem->working_time);
             $jobVacancy->setExperience($resultItem->experience);
             $jobVacancy->setUuid($resultItem->uuid);
+            $jobVacancy->setUrlToken($resultItem->url_token);
 
             $createdAt = new Carbon($resultItem->created_at);
             $jobVacancy->setCreatedAt($createdAt);
@@ -183,5 +184,34 @@ class JobVacancyRepository
         }
 
         return $jobVacancies;
+    }
+
+    public function getJobVacancyByUrlToken(string $urlToken): JobVacancy
+    {
+
+        $query = "select * from job_vacancies where url_token = \"$urlToken\"";
+
+        $result = DB::select($query);
+        $item = $result[0];
+
+        $jobVacancyStatus = new JobVacancyStatus($item->status);
+
+
+        $result = new JobVacancy();
+        $result->setId($item->id);
+        $result->setJobVacancyStatus($jobVacancyStatus);
+        $result->setTitle($item->title);
+        $result->setDescription($item->description);
+        $result->setCompanyId($item->company_id);
+        $result->setLocation($item->location);
+        $result->setModality($item->modality);
+        $result->setWorkingTime($item->working_time);
+        $result->setExperience($item->experience);
+        $result->setUuid($item->uuid);
+
+        $createdAt = new Carbon($item->created_at);
+        $result->setCreatedAt($createdAt);
+
+        return $result;
     }
 }

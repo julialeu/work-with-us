@@ -23,6 +23,7 @@ class ShowCompanyPageController
 
         return view('company-page', [
             'companyName' => $company->name(),
+            'companySlug' => $company->slug(),
             'jobVacancies' => $jobVacancies
         ]);
     }

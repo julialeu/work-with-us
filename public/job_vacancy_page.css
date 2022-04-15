@@ -1,35 +1,41 @@
 .ccsticky-nav {
     width: 100%;
-    height: 90px;
-    position: fixed;
     top: 0;
     background: #ffffff;
     box-shadow: 0 3px 10px -4px rgb(51 62 73 / 18%), 0 6px 17px 2px rgb(51 62 73 / 8%);
     font-size: 50px;
+    text-align: center;
 }
 
 .ccsticky-nav .company {
-    padding: 20px;
+    padding: 20px 20px 0px 20px;
     margin: 0 auto;
     text-align: center;
 }
 
-.job-title {
+.job-attribute {
     text-align: center;
+
+}
+.job-title {
     font-size: 22px;
     color: #333e49;
     font-weight: 600;
-    margin: 24px auto 12px;
+    margin: 10px auto 12px;
     max-width: 600px;
-
 }
+
+.job-modality, .job-location {
+
+    font-size: 18px;
+}
+
 
 .main {
     width: 100%;
     background: #fff;
     border-bottom: 1px solid #ccc;
     height: 1024px;
-    margin-top: 120px;
 }
 
 body {

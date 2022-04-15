@@ -179,4 +179,16 @@ class JobVacancy
         return $this;
     }
 
+    public function isModalityRemote(): bool
+    {
+        return $this->modality() === 'remote';
+    }
+
+    public function  isModalityHibryd(): bool
+    {
+        return $this->modality() === 'hibryd';
+    }
+
+
+
 }
