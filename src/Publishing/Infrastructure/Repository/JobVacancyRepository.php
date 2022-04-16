@@ -62,13 +62,15 @@ class JobVacancyRepository
 
         $offset = ($resultsPerPage * $pageNumber) - $resultsPerPage;
 
-        $query = "select id, status, title, description, company_id, location,
+        $query = "select job_vacancies.id, status, title, description, company_id, companies.name, location,
                        modality, working_time,
-                       experience, uuid, created_at
+                       experience, uuid, job_vacancies.created_at
                 from job_vacancies
+                    inner join companies on companies.id = job_vacancies.company_id
                 where user_id = $userId";
 
         $query = $query . " limit " . $resultsPerPage . " OFFSET " . $offset;
+
         $result = DB::select($query);
 
         $jobVacancies = [];
