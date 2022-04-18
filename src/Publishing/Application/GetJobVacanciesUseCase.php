@@ -53,7 +53,7 @@ class GetJobVacanciesUseCase
             ];
 
             $dataItems[] = $item;
-            
+
         }
 
         $data = [
