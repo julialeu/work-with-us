@@ -7,6 +7,7 @@ use Carbon\Carbon;
 class Company
 {
     private int $id;
+    private int $mainUserId;
     private string $name;
     private string $slug;
     private Carbon $createdAt;
@@ -19,6 +20,18 @@ class Company
     public function setId(int $id): self
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    public function mainUserId(): int
+    {
+        return $this->mainUserId;
+    }
+
+    public function setMainUserId(int $mainUserId): self
+    {
+        $this->mainUserId = $mainUserId;
 
         return $this;
     }

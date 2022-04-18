@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CreateCompanyController;
 use App\Http\Controllers\CreateJobVacancyController;
 use App\Http\Controllers\EditJobVacancyController;
 use App\Http\Controllers\GetJobVacanciesController;
@@ -64,5 +65,6 @@ Route::group([
     Route::patch('mark-job-vacancy-as-unpublished', MarkJobVacancyAsUnpublishedController::class);
 
     Route::get('my-companies', GetMyCompaniesController::class);
+    Route::post('company', CreateCompanyController::class);
 
 });

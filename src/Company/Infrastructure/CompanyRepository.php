@@ -50,4 +50,36 @@ class CompanyRepository
 
         return $result;
     }
+
+    public function createCompany(Company $company): Company
+    {
+        $mainUserId = $company->mainUserId();
+        $name = $company->name();
+        $slug = $company->slug();
+
+        $now = Carbon::now()->format('Y-m-d H:i:s');
+
+        $companyId = DB::table('companies')->insertGetId(
+            [
+                'main_user_id' => $mainUserId,
+                'name' => $name,
+                'slug' => $slug,
+                'created_at' => $now,
+                'updated_at' => $now
+            ]
+        );
+
+        $company->setId($companyId);
+
+        DB::table('user_company')->insertGetId(
+            [
+                'user_id' => $mainUserId,
+                'company_id' => $companyId,
+                'created_at' => $now,
+                'updated_at' => $now
+            ]
+        );
+
+        return $company;
+    }
 }

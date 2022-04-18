@@ -27,6 +27,7 @@ class GetMyCompaniesUseCase
                 'id' => $company->id(),
                 'name' => $company->name(),
                 'slug' => $company->slug(),
+                'created_at' => $company->createdAt()->toIso8601ZuluString(),
             ];
 
             $dataItems[] = $item;
