@@ -59,10 +59,9 @@ class JobVacancyRepository
         int $userId,
         int $resultsPerPage
     ): array {
-
         $offset = ($resultsPerPage * $pageNumber) - $resultsPerPage;
 
-        $query = "select job_vacancies.id, status, title, description, company_id, companies.name, location,
+        $query = "select job_vacancies.id, status, title, description, company_id, companies.name as company_name, location,
                        modality, working_time,
                        experience, uuid, job_vacancies.created_at
                 from job_vacancies
@@ -84,6 +83,7 @@ class JobVacancyRepository
             $jobVacancy->setTitle($resultItem->title);
             $jobVacancy->setDescription($resultItem->description);
             $jobVacancy->setCompanyId($resultItem->company_id);
+            $jobVacancy->setCompanyName($resultItem->company_name);
             $jobVacancy->setLocation($resultItem->location);
             $jobVacancy->setModality($resultItem->modality);
             $jobVacancy->setWorkingTime($resultItem->working_time);

@@ -12,6 +12,7 @@ class JobVacancy
     private int $id;
     private int $userId;
     private int $companyId;
+    private string $companyName;
     private JobVacancyStatus $jobVacancyStatus;
     private string $title;
     private ?string $description;
@@ -187,6 +188,18 @@ class JobVacancy
     public function  isModalityHibryd(): bool
     {
         return $this->modality() === 'hibryd';
+    }
+
+    public function companyName(): string
+    {
+        return $this->companyName;
+    }
+
+    public function setCompanyName(string $companyName): self
+    {
+        $this->companyName = $companyName;
+
+        return $this;
     }
 
 

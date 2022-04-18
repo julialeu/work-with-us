@@ -2,29 +2,25 @@
 
 namespace WorkWithUs\Publishing\Application;
 
-use Carbon\Carbon;
 use WorkWithUs\Auth\Domain\Entity\JobVacancy;
-use WorkWithUs\Auth\Domain\Service\GetAuthenticatedUserService;
+use WorkWithUs\Auth\Domain\Entity\User;
 use WorkWithUs\Publishing\Infrastructure\Repository\JobVacancyRepository;
 
 class GetJobVacanciesUseCase
 {
     private JobVacancyRepository $jobVacancyRepository;
-    private GetAuthenticatedUserService $getAuthenticatedUserService;
 
     public function __construct(
         JobVacancyRepository $jobVacancyRepository,
-        GetAuthenticatedUserService $getAuthenticatedUserService
     ) {
         $this->jobVacancyRepository = $jobVacancyRepository;
-        $this->getAuthenticatedUserService = $getAuthenticatedUserService;
     }
     public function execute(
-        int $numPage
+        int $numPage,
+        User $actingUser
     ): array
     {
-        $user = $this->getAuthenticatedUserService->execute();
-        $userId = $user->id();
+        $userId = $actingUser->id();
         $resultsPerPage = JobVacancy::NUM_JOB_VACANCIES_PER_PAGE;
 
         $jobVacancies = $this->jobVacancyRepository->getJobVacanciesByUserIdPaginated(
@@ -35,9 +31,10 @@ class GetJobVacanciesUseCase
 
         $numJobVacanciesUser = $this->jobVacancyRepository->countJobVacanciesByUserId($userId);
 
-        $totalNumPages = ceil($numJobVacanciesUser / $resultsPerPage);
+        $totalNumPages = (int) ceil($numJobVacanciesUser / $resultsPerPage);
 
         $dataItems = [];
+
 
         foreach ($jobVacancies as $jobVacancy) {
             $item = [
@@ -46,6 +43,7 @@ class GetJobVacanciesUseCase
                 'title' => $jobVacancy->title(),
                 'description' => $jobVacancy->description(),
                 'company_id' => $jobVacancy->companyId(),
+                'company_name' => $jobVacancy->companyName(),
                 'location' => $jobVacancy->location(),
                 'modality' => $jobVacancy->modality(),
                 'working_time' => $jobVacancy->workingTime(),
@@ -55,6 +53,7 @@ class GetJobVacanciesUseCase
             ];
 
             $dataItems[] = $item;
+            
         }
 
         $data = [

@@ -29,7 +29,7 @@ class GetJobVacancyUseCaseTest extends TestCase
             ->setUserId(2)
             ->setTitle('Trainee front-end')
             ->setDescription('Trainee front-end')
-            ->setCompany('Cocacola')
+            ->setCompanyName('Cocacola')
             ->setLocation('Pamplona')
             ->setModality('on_site')
             ->setWorkingTime('Jornada completa')

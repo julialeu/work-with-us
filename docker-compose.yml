@@ -2,16 +2,16 @@ version: '3'
 services:
 
     #PHP Service
-    app:
+    wwu_app:
         build:
             context: .
             dockerfile: Dockerfile
         image: digitalocean.com/php
-        container_name: app
+        container_name: wwu_app
         restart: unless-stopped
         tty: true
         environment:
-            SERVICE_NAME: app
+            SERVICE_NAME: wwu_app
             SERVICE_TAGS: dev
         working_dir: /var/www
         volumes:
@@ -21,9 +21,9 @@ services:
             - app-network
 
     #Nginx Service
-    webserver:
+    wwu_webserver:
         image: nginx:alpine
-        container_name: webserver
+        container_name: wwu_webserver
         restart: unless-stopped
         tty: true
         ports:
@@ -36,9 +36,9 @@ services:
             - app-network
 
     #MySQL Service
-    db:
+    wwu_db:
         image: mysql:5.7.22
-        container_name: db
+        container_name: wwu_db
         restart: unless-stopped
         tty: true
         ports:
