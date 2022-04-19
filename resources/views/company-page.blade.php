@@ -46,6 +46,39 @@
 
             <h3>Job Openings</h3>
 
+            <form>
+                <label for="working_time">Jornada:</label>&nbsp
+                <select id="working_time" name="working_time">
+                    <option value="">Selecciona una opción...</option>
+                    <option value="full_time" <?php if($workingTime === 'full_time') { echo 'selected'; } ?> >Jornada completa</option>
+                    <option value="part_time" <?php if($workingTime === 'part_time') {echo 'selected';} ?> >Media jornada</option>
+                </select><br>
+
+                <label for="modality">Modalidad:</label>&nbsp
+                <select id="modality" name="modality">
+                    <option value="">Selecciona una opción...</option>
+                    <option value="on_site" <?php if ($modality === 'on_site') {echo 'selected';} ?> >Presencial</option>
+                    <option value="remote" <?php if ($modality === 'remote') {echo 'selected';} ?> >Remoto</option>
+                    <option value="hybrid" <?php if ($modality === 'hibryd') {echo 'selected';} ?> >Híbrido</option>
+                </select><br>
+
+                <label for="experience">Experiencia:</label>&nbsp
+                <select id="experience" name="experience">
+                    <option value="">Selecciona una opción...</option>
+                    <option value="trainee" <?php if ($experience === 'trainee') {echo 'selected';} ?> >Prácticas</option>
+                    <option value="junior" <?php if ($experience === 'junior') {echo 'selected';} ?> >Junior</option>
+                    <option value="senior" <?php if ($experience === 'senior') {echo 'selected';} ?> >Senior</option>
+                </select><br><br>
+
+                <br>
+                <button type="submit" value="Submit">Submit</button>
+
+{{--                <th><a href="<?php echo($nameUrl); ?>">Nombre</a></th>--}}
+
+            </form>
+
+
+
             <ul class="list">
 
                 <li>
