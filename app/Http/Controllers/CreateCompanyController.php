@@ -18,11 +18,13 @@ class CreateCompanyController extends Controller
         $actingAdminUserId = $actingAdminUser->id();
 
         $name = $request->get('name');
+        $description = $request->get('description');
 
 
         $createCompanyUseCase->execute(
             $actingAdminUserId,
-            $name
+            $name,
+            $description
         );
 
         return new JsonResponse();

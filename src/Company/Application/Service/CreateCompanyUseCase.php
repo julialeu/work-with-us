@@ -17,6 +17,7 @@ class CreateCompanyUseCase
     public function execute(
         int $actingUserId,
         string $name,
+        string $description,
     ) {
 
         // TODO create the slug from the name !!!
@@ -26,6 +27,7 @@ class CreateCompanyUseCase
         $company = (new Company())
             ->setMainUserId($actingUserId)
             ->setName($name)
+            ->setDescription($description)
             ->setSlug($slug);
 
         $this->companyRepository->createCompany($company);

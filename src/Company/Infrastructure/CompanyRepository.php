@@ -55,6 +55,7 @@ class CompanyRepository
     {
         $mainUserId = $company->mainUserId();
         $name = $company->name();
+        $description = $company->description();
         $slug = $company->slug();
 
         $now = Carbon::now()->format('Y-m-d H:i:s');
@@ -63,6 +64,7 @@ class CompanyRepository
             [
                 'main_user_id' => $mainUserId,
                 'name' => $name,
+                'description' => $description,
                 'slug' => $slug,
                 'created_at' => $now,
                 'updated_at' => $now
@@ -81,5 +83,36 @@ class CompanyRepository
         );
 
         return $company;
+    }
+
+    public function getById(int $companyId): Company
+    {
+        $query = "select * from companies where id = \"$companyId\"";
+
+        $result = DB::select($query);
+        $item = $result[0];
+
+        $result = new Company();
+        $result->setId($item->id);
+        $result->setSlug($item->slug);
+        $result->setName($item->name);
+        $result->setDescription($item->description);
+        $result->setCreatedAt(new Carbon($item->created_at));
+
+        return $result;
+    }
+
+    public function updateCompany(Company $company)
+    {
+        $name = $company->name();
+        $description = $company->description();
+        $companyId = $company->id();
+
+        $query = "update companies
+        set name = '$name',
+            description = '$description'
+           where id = '$companyId'";
+
+        DB::update($query);
     }
 }

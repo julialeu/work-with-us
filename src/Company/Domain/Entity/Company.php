@@ -9,6 +9,7 @@ class Company
     private int $id;
     private int $mainUserId;
     private string $name;
+    private string $description;
     private string $slug;
     private Carbon $createdAt;
 
@@ -44,6 +45,18 @@ class Company
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function description(): string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

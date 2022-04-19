@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\CreateCompanyController;
 use App\Http\Controllers\CreateJobVacancyController;
+use App\Http\Controllers\EditCompanyController;
 use App\Http\Controllers\EditJobVacancyController;
+use App\Http\Controllers\GetCompanyController;
 use App\Http\Controllers\GetJobVacanciesController;
 use App\Http\Controllers\GetJobVacancyController;
 use App\Http\Controllers\GetMyCompaniesController;
@@ -66,5 +68,7 @@ Route::group([
 
     Route::get('my-companies', GetMyCompaniesController::class);
     Route::post('company', CreateCompanyController::class);
+    Route::get('company', GetCompanyController::class);
+    Route::patch('company', EditCompanyController::class);
 
 });
