@@ -156,9 +156,30 @@ class JobVacancyRepository
         DB::update($query);
     }
 
-    public function findPublishedByCompanyId(int $companyId): array
+    public function findPublishedByCompanyId(
+        int $companyId,
+        ?string $workingTime,
+        ?string $modality,
+        ?string $experience
+    ): array
     {
-        $query = "select * from job_vacancies where company_id = $companyId and status = 'published'";
+        $query = "select * from job_vacancies where company_id = $companyId
+                              and status = 'published'";
+
+        if (!$workingTime == '') {
+            $query = $query . " and working_time = '$workingTime'";
+        }
+
+        if (!$modality == '') {
+            $query = $query . " and modality = '$modality'";
+
+        }
+
+        if (!$experience == '') {
+            $query = $query . " and experience = '$experience'";
+
+        }
+
         $result = DB::select($query);
 
         $jobVacancies = [];
