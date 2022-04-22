@@ -18,7 +18,7 @@
 <div class="main">
 
     <div class="introduction">
-        <h1>Careers at Zara</h1>
+        <h1>Careers at {{ $companyName }}</h1>
 
         <br>
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the

@@ -4,7 +4,7 @@ namespace WorkWithUs\Auth\Domain\Service;
 
 class SlugifyService
 {
-    public static function slugify(string $text, string $divider = '-'): string
+    public function slugify(string $text, string $divider = '-'): string
     {
         // replace non letter or digits by divider
         $text = preg_replace('~[^\pL\d]+~u', $divider, $text);

@@ -19,9 +19,6 @@ class CreateCompanyUseCase
         string $name,
         string $description,
     ) {
-
-        // TODO create the slug from the name !!!
-
         $slug = $this->slugifyService->slugify($name);
 
         $company = (new Company())
