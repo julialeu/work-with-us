@@ -5,6 +5,7 @@
     box-shadow: 0 3px 10px -4px rgb(51 62 73 / 18%), 0 6px 17px 2px rgb(51 62 73 / 8%);
     font-size: 50px;
     text-align: center;
+    padding-bottom: 15px;
 }
 
 .ccsticky-nav .company {
@@ -26,7 +27,7 @@
 }
 
 .job-modality, .job-location {
-
+    margin-bottom: 10px;
     font-size: 18px;
 }
 
@@ -34,12 +35,18 @@
 .main {
     width: 100%;
     background: #fff;
-    border-bottom: 1px solid #ccc;
-    height: 1024px;
+    padding-bottom: 60px;
 }
 
 body {
     margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #636d77;
+}
+
+h1, h2, h3, h4, .company {
+    color: #333e49;
 }
 
 .openings {
@@ -125,3 +132,23 @@ body {
     text-decoration: none;
 }
 
+.buttonApply {
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    color: white;
+    background-color: #00b799;
+    text-decoration: none;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    border-color: #00b799;
+    border-radius: 10px;
+    border-bottom: none;
+    box-shadow: none;
+    border-width: 0;
+}

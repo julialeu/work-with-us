@@ -6,6 +6,7 @@
     background: #ffffff;
     box-shadow: 0 3px 10px -4px rgb(51 62 73 / 18%), 0 6px 17px 2px rgb(51 62 73 / 8%);
     font-size: 50px;
+    padding-bottom: 15px;
 }
 
 .ccsticky-nav .company {
@@ -34,6 +35,13 @@
 
 body {
     margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #636d77;
+}
+
+h1, h2, h3, h4, .company, .job-title {
+    color: #333e49;
 }
 
 .openings {
@@ -61,7 +69,7 @@ body {
 
 .list li {
     padding: 10px;
-    margin: 10px;
+    margin: 0px;
     box-shadow: 0 3px 10px -4px rgb(51 62 73 / 18%), 0 6px 17px 2px rgb(51 62 73 / 8%);
 
     transition: transform 0.2s ease-in-out;
@@ -117,5 +125,27 @@ body {
 
 .job-block {
     text-decoration: none;
+}
+
+.job-vacancies select {
+    font-size:18px;
+    padding: 10px;
+    margin: 10px 20px 10px 0px;
+    border-radius: 7px;
+    color: rgb(99, 109, 119);
+}
+.job-vacancies form {
+    margin-bottom: 25px;
+}
+
+.button {
+    border-radius: 4px;
+    color: #636d77;
+    background-color: #f9f9f9;
+    border-color: #a0aec0;
+}
+
+.submitButton {
+    font-size: 18px;
 }
 
