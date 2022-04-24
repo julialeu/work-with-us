@@ -3,9 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/company_page.css">
 
     <title>Work With Us</title>
-    <link rel="stylesheet" href="/company_page.css">
 
 </head>
 <body>
@@ -44,36 +47,32 @@
 
         <div class="job-vacancies">
 
-            <h3>Job Openings</h3>
+            <h2>Job Openings</h2>
 
             <form>
-                <label for="working_time">Jornada:</label>&nbsp
-                <select id="working_time" name="working_time">
-                    <option value="">Selecciona una opción...</option>
-                    <option value="full_time" <?php if($workingTime === 'full_time') { echo 'selected'; } ?> >Jornada completa</option>
-                    <option value="part_time" <?php if($workingTime === 'part_time') {echo 'selected';} ?> >Media jornada</option>
-                </select><br>
+                <div>
+                    <select id="working_time" name="working_time">
+                        <option value="">Jornada</option>
+                        <option value="full_time" <?php if($workingTime === 'full_time') { echo 'selected'; } ?> >Jornada completa</option>
+                        <option value="part_time" <?php if($workingTime === 'part_time') {echo 'selected';} ?> >Media jornada</option>
+                    </select>
 
-                <label for="modality">Modalidad:</label>&nbsp
-                <select id="modality" name="modality">
-                    <option value="">Selecciona una opción...</option>
-                    <option value="on_site" <?php if ($modality === 'on_site') {echo 'selected';} ?> >Presencial</option>
-                    <option value="remote" <?php if ($modality === 'remote') {echo 'selected';} ?> >Remoto</option>
-                    <option value="hybrid" <?php if ($modality === 'hibryd') {echo 'selected';} ?> >Híbrido</option>
-                </select><br>
+                    <select id="modality" name="modality">
+                        <option value="">Modalidad</option>
+                        <option value="on_site" <?php if ($modality === 'on_site') {echo 'selected';} ?> >Presencial</option>
+                        <option value="remote" <?php if ($modality === 'remote') {echo 'selected';} ?> >Remoto</option>
+                        <option value="hybrid" <?php if ($modality === 'hibryd') {echo 'selected';} ?> >Híbrido</option>
+                    </select>
 
-                <label for="experience">Experiencia:</label>&nbsp
-                <select id="experience" name="experience">
-                    <option value="">Selecciona una opción...</option>
-                    <option value="trainee" <?php if ($experience === 'trainee') {echo 'selected';} ?> >Prácticas</option>
-                    <option value="junior" <?php if ($experience === 'junior') {echo 'selected';} ?> >Junior</option>
-                    <option value="senior" <?php if ($experience === 'senior') {echo 'selected';} ?> >Senior</option>
-                </select><br><br>
-
+                    <select id="experience" name="experience">
+                        <option value="">Experiencia</option>
+                        <option value="trainee" <?php if ($experience === 'trainee') {echo 'selected';} ?> >Prácticas</option>
+                        <option value="junior" <?php if ($experience === 'junior') {echo 'selected';} ?> >Junior</option>
+                        <option value="senior" <?php if ($experience === 'senior') {echo 'selected';} ?> >Senior</option>
+                    </select>
+                </div>
                 <br>
-                <button type="submit" value="Submit">Submit</button>
-
-{{--                <th><a href="<?php echo($nameUrl); ?>">Nombre</a></th>--}}
+                <button type="submit" value="Submit" class="button submitButton">Filtrar</button>
 
             </form>
 
