@@ -195,4 +195,5 @@ return [
         // ...
     ])->toArray(),
 
+    'ADMIN_URL' => env('ADMIN_URL'),
 ];
