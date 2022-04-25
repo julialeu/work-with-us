@@ -45,13 +45,6 @@ Route::group([
     Route::post('me', 'App\Http\Controllers\AuthController@me');
 
     Route::post('register', RegisterUserController::class);
-
-    // TODO move to private api block and fix url in the frontend
-    Route::get('profile', GetUserProfileController::class);
-    Route::post('job-vacancy', CreateJobVacancyController::class);
-    Route::get('job-vacancies', GetJobVacanciesController::class);
-    Route::get('job-vacancy', GetJobVacancyController::class);
-    Route::patch('job-vacancy', EditJobVacancyController::class);
 });
 
 
@@ -61,7 +54,12 @@ Route::group([
     'prefix' => 'api/user'
 
 ], function ($router) {
+    Route::get('profile', GetUserProfileController::class);
 
+    Route::post('job-vacancy', CreateJobVacancyController::class);
+    Route::get('job-vacancies', GetJobVacanciesController::class);
+    Route::get('job-vacancy', GetJobVacancyController::class);
+    Route::patch('job-vacancy', EditJobVacancyController::class);
 
     Route::patch('mark-job-vacancy-as-published', MarkJobVacancyAsPublishedController::class);
     Route::patch('mark-job-vacancy-as-unpublished', MarkJobVacancyAsUnpublishedController::class);

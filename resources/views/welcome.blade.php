@@ -10,7 +10,7 @@
 <body>
 
 <div class="header" id="myHeader">
-    <h2>Work With Us</h2>
+    <h2><a href="/">Work With Us</a></h2>
 </div>
 
 <div class="content">
@@ -20,17 +20,33 @@
         <a href="{{config('app.ADMIN_URL') }}/register" class="register button">Regístrate</a>
     </div>
     <div class="hint">
-        <h3>Work With Us es la forma más fácil para que los equipos de HR puedan gestionar...</h3>
-
+        <h3>Work With Us es la forma más fácil para que los equipos de HR puedan gestionar los procesos de contratación.</h3>
     </div>
     <div class="cta">
-        3
+
     </div>
 
 </div>
 
+<footer class="siteFooter">
+    <div class="container">
+        <div class="footerRow">
+            <div class="titleFooter">
+                <h4>Work With Us</h4>
+                <ul>
+                    <li><a href="{{config('app.ADMIN_URL') }}/login">Login</a></li>
+                    <li><a href="{{config('app.ADMIN_URL') }}/register">Regístrate</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
 <script>
-    window.onscroll = function() {myFunction()};
+    window.onscroll = function () {
+        myFunction()
+    };
 
     var header = document.getElementById("myHeader");
     var sticky = header.offsetTop;
@@ -45,4 +61,5 @@
 </script>
 
 </body>
+
 </html>

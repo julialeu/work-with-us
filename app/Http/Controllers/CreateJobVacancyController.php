@@ -11,7 +11,7 @@ class CreateJobVacancyController extends Controller
 {
     public function __invoke(
         Request $request,
-        CreateJobVacancyUseCase $addJobVacancyUseCase,
+        CreateJobVacancyUseCase $createJobVacancyUseCase,
         GetAuthenticatedUserService $getAuthenticatedUserService
     ): JsonResponse {
         $user = $getAuthenticatedUserService->execute();
@@ -26,7 +26,7 @@ class CreateJobVacancyController extends Controller
         $workingTime = $request->get('workingTime');
         $experience = $request->get('experience');
 
-        $addJobVacancyUseCase->execute(
+        $createJobVacancyUseCase->execute(
             $userId,
             $title,
             $description,
