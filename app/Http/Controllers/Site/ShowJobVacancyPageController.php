@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
 use WorkWithUs\Company\Infrastructure\CompanyRepository;
-use WorkWithUs\Publishing\Infrastructure\Repository\JobVacancyRepository;
+use WorkWithUs\Publishing\Domain\Repository\JobVacancyRepositoryInterface;
 
 class ShowJobVacancyPageController
 {
@@ -12,7 +12,7 @@ class ShowJobVacancyPageController
     public function __invoke(
         Request $request,
         CompanyRepository $companyRepository,
-        JobVacancyRepository $jobVacancyRepository
+        JobVacancyRepositoryInterface $jobVacancyRepository
 
     )
     {

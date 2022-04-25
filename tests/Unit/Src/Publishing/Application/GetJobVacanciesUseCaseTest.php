@@ -8,20 +8,20 @@ use WorkWithUs\Auth\Domain\Entity\JobVacancy;
 use WorkWithUs\Auth\Domain\Entity\User;
 use WorkWithUs\Publishing\Application\GetJobVacanciesUseCase;
 use WorkWithUs\Publishing\Domain\ValueObject\JobVacancyStatus;
-use WorkWithUs\Publishing\Infrastructure\Repository\JobVacancyRepository;
+use WorkWithUs\Publishing\Domain\Repository\JobVacancyRepositoryInterface;
 
 class GetJobVacanciesUseCaseTest extends TestCase
 {
 
     private GetJobVacanciesUseCase $sut;
 
-    private JobVacancyRepository $jobVacancyRepository;
+    private JobVacancyRepositoryInterface $jobVacancyRepository;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->jobVacancyRepository = $this->createMock(JobVacancyRepository::class);
+        $this->jobVacancyRepository = $this->createMock(JobVacancyRepositoryInterface::class);
 
         $this->sut = new GetJobVacanciesUseCase(
             $this->jobVacancyRepository

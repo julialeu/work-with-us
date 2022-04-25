@@ -5,18 +5,18 @@ namespace Tests\Unit\Src\Publishing\Application;
 use Tests\TestCase;
 use WorkWithUs\Auth\Domain\Entity\JobVacancy;
 use WorkWithUs\Publishing\Application\EditJobVacancyUseCase;
-use WorkWithUs\Publishing\Infrastructure\Repository\JobVacancyRepository;
+use WorkWithUs\Publishing\Domain\Repository\JobVacancyRepositoryInterface;
 
 class EditJobVacancyUseCaseTest extends TestCase
 {
     private EditJobVacancyUseCase $sut;
-    private JobVacancyRepository $jobVacancyRepository;
+    private JobVacancyRepositoryInterface $jobVacancyRepository;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->jobVacancyRepository = $this->createMock(JobVacancyRepository::class);
+        $this->jobVacancyRepository = $this->createMock(JobVacancyRepositoryInterface::class);
 
         $this->sut = new EditJobVacancyUseCase($this->jobVacancyRepository);
     }

@@ -6,14 +6,14 @@ use RuntimeException;
 use WorkWithUs\Auth\Domain\Entity\JobVacancy;
 use WorkWithUs\Auth\Domain\Entity\User;
 use WorkWithUs\Publishing\Domain\ValueObject\JobVacancyStatus;
-use WorkWithUs\Publishing\Infrastructure\Repository\JobVacancyRepository;
+use WorkWithUs\Publishing\Domain\Repository\JobVacancyRepositoryInterface;
 
 class MarkJobVacancyAsUnpublishedUseCase
 {
-    private JobVacancyRepository $jobVacancyRepository;
+    private JobVacancyRepositoryInterface $jobVacancyRepository;
 
     public function __construct(
-        JobVacancyRepository $jobVacancyRepository
+        JobVacancyRepositoryInterface $jobVacancyRepository
     ) {
         $this->jobVacancyRepository = $jobVacancyRepository;
     }

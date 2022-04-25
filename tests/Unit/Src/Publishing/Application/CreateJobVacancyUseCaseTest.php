@@ -8,13 +8,13 @@ use WorkWithUs\Auth\Domain\Service\GenerateRandomStringService;
 use WorkWithUs\Auth\Domain\Service\GenerateUuidService;
 use WorkWithUs\Publishing\Application\CreateJobVacancyUseCase;
 use WorkWithUs\Publishing\Domain\ValueObject\JobVacancyStatus;
-use WorkWithUs\Publishing\Infrastructure\Repository\JobVacancyRepository;
+use WorkWithUs\Publishing\Domain\Repository\JobVacancyRepositoryInterface;
 
 class CreateJobVacancyUseCaseTest extends TestCase
 {
     private CreateJobVacancyUseCase $sut;
 
-    private JobVacancyRepository $jobVacancyRepository;
+    private JobVacancyRepositoryInterface $jobVacancyRepository;
     private GenerateRandomStringService $generateRandomStringService;
     private GenerateUuidService $generateUuidService;
 
@@ -22,7 +22,7 @@ class CreateJobVacancyUseCaseTest extends TestCase
     {
         parent::setUp();
 
-        $this->jobVacancyRepository = $this->createMock(JobVacancyRepository::class);
+        $this->jobVacancyRepository = $this->createMock(JobVacancyRepositoryInterface::class);
         $this->generateRandomStringService = $this->createMock(GenerateRandomStringService::class);
         $this->generateUuidService = $this->createMock(GenerateUuidService::class);
 

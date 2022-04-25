@@ -2,14 +2,14 @@
 
 namespace WorkWithUs\Publishing\Application;
 
-use WorkWithUs\Publishing\Infrastructure\Repository\JobVacancyRepository;
+use WorkWithUs\Publishing\Domain\Repository\JobVacancyRepositoryInterface;
 
 class EditJobVacancyUseCase
 {
-    private JobVacancyRepository $jobVacancyRepository;
+    private JobVacancyRepositoryInterface $jobVacancyRepository;
 
     public function __construct(
-        JobVacancyRepository $jobVacancyRepository,
+        JobVacancyRepositoryInterface $jobVacancyRepository,
     ) {
         $this->jobVacancyRepository = $jobVacancyRepository;
     }

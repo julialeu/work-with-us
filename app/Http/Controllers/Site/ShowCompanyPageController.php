@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use WorkWithUs\Auth\Domain\Service\GetAuthenticatedUserService;
 use WorkWithUs\Company\Infrastructure\CompanyRepository;
-use WorkWithUs\Publishing\Infrastructure\Repository\JobVacancyRepository;
+use WorkWithUs\Publishing\Domain\Repository\JobVacancyRepositoryInterface;
 
 class ShowCompanyPageController
 {
@@ -13,7 +13,7 @@ class ShowCompanyPageController
         Request $request,
         GetAuthenticatedUserService $getAuthenticatedUserService,
         CompanyRepository $companyRepository,
-        JobVacancyRepository $jobVacancyRepository
+        JobVacancyRepositoryInterface $jobVacancyRepository
 
     ) {
         $companySlug = $request->route('companySlug');

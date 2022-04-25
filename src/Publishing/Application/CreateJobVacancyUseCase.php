@@ -6,16 +6,16 @@ use WorkWithUs\Auth\Domain\Entity\JobVacancy;
 use WorkWithUs\Auth\Domain\Service\GenerateRandomStringService;
 use WorkWithUs\Auth\Domain\Service\GenerateUuidService;
 use WorkWithUs\Publishing\Domain\ValueObject\JobVacancyStatus;
-use WorkWithUs\Publishing\Infrastructure\Repository\JobVacancyRepository;
+use WorkWithUs\Publishing\Domain\Repository\JobVacancyRepositoryInterface;
 
 class CreateJobVacancyUseCase
 {
-    private JobVacancyRepository $jobVacancyRepository;
+    private JobVacancyRepositoryInterface $jobVacancyRepository;
     private GenerateRandomStringService $generateRandomStringService;
     private GenerateUuidService $generateUuidService;
 
     public function __construct(
-        JobVacancyRepository $jobVacancyRepository,
+        JobVacancyRepositoryInterface $jobVacancyRepository,
         GenerateRandomStringService $generateRandomStringService,
         GenerateUuidService $generateUuidService
     ) {
