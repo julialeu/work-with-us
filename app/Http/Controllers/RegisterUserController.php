@@ -20,10 +20,8 @@ class RegisterUserController extends Controller
             $email = $request->get('email');
             $password = $request->get('password');
             $name = $request->get('name');
-            $company = $request->get('company');
-
             try {
-                $registrationResult = $registerUserUseCase->execute($email, $password, $name, $company);
+                $registrationResult = $registerUserUseCase->execute($email, $password, $name);
             } catch (UserWithSameEmailExistException $e) {
                 return new JsonResponse(
                     ['errorMessage' => 'Ya existe un usuario registrado con este email'],
