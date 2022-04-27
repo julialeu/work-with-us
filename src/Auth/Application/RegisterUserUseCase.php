@@ -27,8 +27,7 @@ class RegisterUserUseCase
     public function execute(
         string $email,
         string $rawPassword,
-        string $name,
-        string $company
+        string $name
     ): array {
         $userWithSameEmail = $this->usersRepository->findByEmail($email);
 
@@ -41,8 +40,7 @@ class RegisterUserUseCase
         $user = (new User())
             ->setEmail($email)
             ->setName($name)
-            ->setHashedPassword($hashedPassword)
-            ->setCompany($company);
+            ->setHashedPassword($hashedPassword);
 
         $this->usersRepository->createUser($user);
 
@@ -51,7 +49,7 @@ class RegisterUserUseCase
             'password' => $rawPassword
         ];
 
-        if (! ($token = $this->authenticateUserService->login($credentials))) {
+        if (!($token = $this->authenticateUserService->login($credentials))) {
             throw new RuntimeException('UserModel created but error in authentication');
         }
 
@@ -61,7 +59,7 @@ class RegisterUserUseCase
     /**
      * Get the token array structure.
      *
-     * @param  string $token
+     * @param string $token
      *
      * @return \Illuminate\Http\JsonResponse
      */

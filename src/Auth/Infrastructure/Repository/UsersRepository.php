@@ -41,6 +41,5 @@ class UsersRepository
 
         DB::statement($query);
 
-        //var_dump($query);
     }
 }
