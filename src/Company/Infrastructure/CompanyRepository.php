@@ -47,6 +47,7 @@ class CompanyRepository
         $result->setSlug($item->slug);
         $result->setName($item->name);
         $result->setCreatedAt(new Carbon($item->created_at));
+        $result->setDescription($item->description);
 
         return $result;
     }

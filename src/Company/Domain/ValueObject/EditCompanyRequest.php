@@ -5,8 +5,8 @@ namespace WorkWithUs\Company\Domain\ValueObject;
 class EditCompanyRequest
 {
     private int $companyId;
-    private string $name;
-    private string $description;
+    private ?string $name;
+    private ?string $description;
 
     public function __construct(
         int $companyId,

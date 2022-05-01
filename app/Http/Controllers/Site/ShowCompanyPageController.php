@@ -28,12 +28,14 @@ class ShowCompanyPageController
             $company->id(),
             $workingTime,
             $modality,
-            $experience
+            $experience,
+
         );
 
         return view('company-page', [
             'companyName' => $company->name(),
             'companySlug' => $company->slug(),
+            'companyDescription' => $company->description(),
             'jobVacancies' => $jobVacancies,
             'workingTime' => $workingTime,
             'modality' => $modality,
