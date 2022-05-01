@@ -64,12 +64,12 @@ class JobVacancyRepositoryMySql implements JobVacancyRepositoryInterface
 
         $query = "select job_vacancies.id, status, title, description, company_id, companies.name as company_name, location,
                        modality, working_time,
-                       experience, uuid, job_vacancies.created_at
+                       experience, uuid, url_token, job_vacancies.created_at, companies.slug as company_slug
                 from job_vacancies
                     inner join companies on companies.id = job_vacancies.company_id
                 where user_id = $userId";
 
-        $query = $query . " limit " . $resultsPerPage . " OFFSET " . $offset;
+        $query = $query . " order by id DESC limit " . $resultsPerPage . " OFFSET " . $offset;
 
         $result = DB::select($query);
 
@@ -85,11 +85,14 @@ class JobVacancyRepositoryMySql implements JobVacancyRepositoryInterface
             $jobVacancy->setDescription($resultItem->description);
             $jobVacancy->setCompanyId($resultItem->company_id);
             $jobVacancy->setCompanyName($resultItem->company_name);
+            $jobVacancy->setCompanySlug($resultItem->company_slug);
+
             $jobVacancy->setLocation($resultItem->location);
             $jobVacancy->setModality($resultItem->modality);
             $jobVacancy->setWorkingTime($resultItem->working_time);
             $jobVacancy->setExperience($resultItem->experience);
             $jobVacancy->setUuid($resultItem->uuid);
+            $jobVacancy->setUrlToken($resultItem->url_token);
 
             $createdAt = new Carbon($resultItem->created_at);
             $jobVacancy->setCreatedAt($createdAt);

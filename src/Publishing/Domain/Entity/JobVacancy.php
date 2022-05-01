@@ -22,6 +22,7 @@ class JobVacancy
     private string $experience;
     private string $uuid;
     private string $urlToken;
+    private string $companySlug;
     private Carbon $createdAt;
 
     public function id(): int
@@ -202,6 +203,15 @@ class JobVacancy
         return $this;
     }
 
+    public function companySlug(): string
+    {
+        return $this->companySlug;
+    }
 
+    public function setCompanySlug(string $companySlug): self
+    {
+        $this->companySlug = $companySlug;
 
+        return $this;
+    }
 }

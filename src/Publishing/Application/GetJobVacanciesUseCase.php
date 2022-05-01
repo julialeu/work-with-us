@@ -42,11 +42,14 @@ class GetJobVacanciesUseCase
                 'title' => $jobVacancy->title(),
                 'description' => $jobVacancy->description(),
                 'company_id' => $jobVacancy->companyId(),
+                'company_name' => $jobVacancy->companyName(),
+                'company_slug'=> $jobVacancy->companySlug(),
                 'location' => $jobVacancy->location(),
                 'modality' => $jobVacancy->modality(),
                 'working_time' => $jobVacancy->workingTime(),
                 'experience' => $jobVacancy->experience(),
                 'uuid' => $jobVacancy->uuid(),
+                'url_token' => $jobVacancy->urlToken(),
                 'created' => $jobVacancy->createdAt()->format('Y-m-d H:i:s')
             ];
 
