@@ -45,7 +45,7 @@
             <h2>Descripción</h2>
         </div>
 
-        {{ $jobVacancy->description() }}
+        {!! $jobVacancy->description() !!}
     </div>
 
     <div class="buttonApply">

@@ -62,7 +62,7 @@ class JobVacancyRepositoryMySql implements JobVacancyRepositoryInterface
     ): array {
         $offset = ($resultsPerPage * $pageNumber) - $resultsPerPage;
 
-        $query = "select job_vacancies.id, status, title, description, company_id, companies.name as company_name, location,
+        $query = "select job_vacancies.id, status, title, job_vacancies.description, company_id, companies.name as company_name, location,
                        modality, working_time,
                        experience, uuid, url_token, job_vacancies.created_at, companies.slug as company_slug
                 from job_vacancies

@@ -50,7 +50,7 @@ class GetJobVacanciesUseCase
                 'experience' => $jobVacancy->experience(),
                 'uuid' => $jobVacancy->uuid(),
                 'url_token' => $jobVacancy->urlToken(),
-                'created' => $jobVacancy->createdAt()->format('Y-m-d H:i:s')
+                'created' => $jobVacancy->createdAt()->format('Y-m-d H:i')
             ];
 
             $dataItems[] = $item;
