@@ -4,7 +4,7 @@ namespace Tests\Unit\Src\Publishing\Application;
 
 use Carbon\Carbon;
 use Tests\TestCase;
-use WorkWithUs\Auth\Domain\Entity\JobVacancy;
+use WorkWithUs\Publishing\Domain\Entity\JobVacancy;
 use WorkWithUs\Auth\Domain\Entity\User;
 use WorkWithUs\Publishing\Application\GetJobVacanciesUseCase;
 use WorkWithUs\Publishing\Domain\ValueObject\JobVacancyStatus;
@@ -12,7 +12,6 @@ use WorkWithUs\Publishing\Domain\Repository\JobVacancyRepositoryInterface;
 
 class GetJobVacanciesUseCaseTest extends TestCase
 {
-
     private GetJobVacanciesUseCase $sut;
 
     private JobVacancyRepositoryInterface $jobVacancyRepository;
@@ -37,9 +36,10 @@ class GetJobVacanciesUseCaseTest extends TestCase
 
         $jobVacancyStatus = new JobVacancyStatus('published');
 
-        $jobVacancies[0] = (new JobVacancy())
+        $jobVacancies[] = (new JobVacancy())
             ->setId(1)
             ->setUserId(555)
+            ->setJobVacancyStatus(JobVacancyStatus::published())
             ->setJobVacancyStatus($jobVacancyStatus)
             ->setTitle('Trainee front-end')
             ->setDescription('Trainee front-end')
@@ -53,12 +53,13 @@ class GetJobVacanciesUseCaseTest extends TestCase
             ->setUuid('aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee')
             ->setCreatedAt(new Carbon('2022-04-18 11:16:44'));
 
-        $jobVacancies[1] = (new JobVacancy())
+        $jobVacancies[] = (new JobVacancy())
             ->setId(2)
             ->setUserId(555)
+            ->setJobVacancyStatus(JobVacancyStatus::unpublished())
             ->setTitle('Senior front-end')
             ->setDescription('Senior front-end')
-            ->setCompanyName('Zara')
+            ->setCompanyId(4)
             ->setLocation('Pamplona')
             ->setModality('on_site')
             ->setWorkingTime('Jornada completa')
@@ -66,7 +67,6 @@ class GetJobVacanciesUseCaseTest extends TestCase
             ->setUrlToken('churro98123')
             ->setUuid('aaaapaaa-bbbb-cccc-dddd-eeeeeeeeeeee')
             ->setCreatedAt(new Carbon('2022-04-18 11:16:48'));
-
 
         $this->jobVacancyRepository
             ->expects(self::once())
@@ -84,12 +84,9 @@ class GetJobVacanciesUseCaseTest extends TestCase
             ->with(555)
             ->willReturn(2);
 
-
         $this->sut->execute(
             2,
             $user
         );
-
     }
-
 }

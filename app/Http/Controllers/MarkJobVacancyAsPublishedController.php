@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use WorkWithUs\Auth\Domain\Service\GetAuthenticatedUserService;
-use WorkWithUs\Publishing\Application\EditJobVacancyUseCase;
 use WorkWithUs\Publishing\Application\MarkJobVacancyAsPublishedUseCase;
 
 class MarkJobVacancyAsPublishedController extends Controller

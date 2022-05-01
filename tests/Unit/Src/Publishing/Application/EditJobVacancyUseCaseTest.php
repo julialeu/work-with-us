@@ -3,8 +3,8 @@
 namespace Tests\Unit\Src\Publishing\Application;
 
 use Tests\TestCase;
-use WorkWithUs\Auth\Domain\Entity\JobVacancy;
 use WorkWithUs\Publishing\Application\EditJobVacancyUseCase;
+use WorkWithUs\Publishing\Domain\Entity\JobVacancy;
 use WorkWithUs\Publishing\Domain\Repository\JobVacancyRepositoryInterface;
 
 class EditJobVacancyUseCaseTest extends TestCase
@@ -39,7 +39,7 @@ class EditJobVacancyUseCaseTest extends TestCase
 
         $this->jobVacancyRepository
             ->expects(self::once())
-            ->method('editJobVacancy')
+            ->method('updateJobVacancy')
             ->with($jobVacancyToStore);
 
         $this->sut->execute(

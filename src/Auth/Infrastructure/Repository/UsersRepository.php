@@ -40,6 +40,5 @@ class UsersRepository
         ";
 
         DB::statement($query);
-
     }
 }

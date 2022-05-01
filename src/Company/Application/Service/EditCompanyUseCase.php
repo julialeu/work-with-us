@@ -2,6 +2,7 @@
 
 namespace WorkWithUs\Company\Application\Service;
 
+use WorkWithUs\Company\Domain\ValueObject\EditCompanyRequest;
 use WorkWithUs\Company\Infrastructure\CompanyRepository;
 
 class EditCompanyUseCase
@@ -12,23 +13,17 @@ class EditCompanyUseCase
     }
 
     public function execute(
-        string $companyId,
-        ?string $name,
-        ?string $description
+        EditCompanyRequest $editCompanyRequest
     ): void {
-        $company = $this->companyRepository->getById($companyId);
+        $company = $this->companyRepository->getById($editCompanyRequest->companyId());
 
-        if ($name !== null) {
-            $company->setName($name);
+        if ($editCompanyRequest->name() !== null) {
+            $company->setName($editCompanyRequest->name());
         }
 
-        if ($description !== null) {
-            $company->setDescription($description);
+        if ($editCompanyRequest->description() !== null) {
+            $company->setDescription($editCompanyRequest->description());
         }
-
-//        if ($description !== null) {
-//            $company->setDescription($description);
-//        }
 
         $this->companyRepository->updateCompany($company);
     }

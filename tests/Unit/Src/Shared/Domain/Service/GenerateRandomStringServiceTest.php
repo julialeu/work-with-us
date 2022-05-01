@@ -3,7 +3,7 @@
 namespace Tests\Unit\Src\Auth\Domain\Service;
 
 use Tests\TestCase;
-use WorkWithUs\Auth\Domain\Service\GenerateRandomStringService;
+use WorkWithUs\Shared\Domain\Service\GenerateRandomStringService;
 
 class GenerateRandomStringServiceTest extends TestCase
 {

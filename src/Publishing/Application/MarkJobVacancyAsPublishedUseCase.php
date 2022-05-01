@@ -3,7 +3,7 @@
 namespace WorkWithUs\Publishing\Application;
 
 use RuntimeException;
-use WorkWithUs\Auth\Domain\Entity\JobVacancy;
+use WorkWithUs\Publishing\Domain\Entity\JobVacancy;
 use WorkWithUs\Auth\Domain\Entity\User;
 use WorkWithUs\Publishing\Domain\ValueObject\JobVacancyStatus;
 use WorkWithUs\Publishing\Domain\Repository\JobVacancyRepositoryInterface;

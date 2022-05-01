@@ -3,7 +3,7 @@
 namespace Tests\Unit\Src\Auth\Domain\Service;
 
 use Tests\TestCase;
-use WorkWithUs\Auth\Domain\Service\GenerateUuidService;
+use WorkWithUs\Shared\Domain\Service\GenerateUuidService;
 
 class GenerateUuidServiceTest extends TestCase
 {
@@ -20,8 +20,6 @@ class GenerateUuidServiceTest extends TestCase
     {
         $result = $this->sut->generate();
 
-        var_dump($result);
-
         $this->assertEquals(36, strlen($result));
 
         $numDashes = substr_count(
@@ -29,7 +27,5 @@ class GenerateUuidServiceTest extends TestCase
             '-'
         );
         $this->assertEquals(4, $numDashes);
-
-
     }
 }

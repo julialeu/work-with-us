@@ -13,7 +13,6 @@ class TransformUserModelService
         $email = $userModel->email;
         $name = $userModel->name;
         $password = $userModel->password;
-        $company = $userModel->company;
 
         $user = new User();
         if ($userId !== null) {
@@ -22,7 +21,6 @@ class TransformUserModelService
         $user->setEmail($email);
         $user->setName($name);
         $user->setHashedPassword($password);
-        $user->setCompany($company);
 
         return $user;
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use WorkWithUs\Company\Application\Service\EditCompanyUseCase;
+use WorkWithUs\Company\Domain\ValueObject\EditCompanyRequest;
 
 class EditCompanyController extends Controller
 {
@@ -13,13 +14,17 @@ class EditCompanyController extends Controller
         Request $request
     ): JsonResponse {
         $companyId = $request->get('companyId');
-        $title = $request->get('title');
+        $name = $request->get('title');
         $description = $request->get('description');
 
-        $editCompanyUseCase->execute(
+        $editCompanyRequest = new EditCompanyRequest(
             $companyId,
-            $title,
+            $name,
             $description
+        );
+
+        $editCompanyUseCase->execute(
+            $editCompanyRequest
         );
 
         return new JsonResponse();

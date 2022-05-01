@@ -4,7 +4,7 @@ namespace WorkWithUs\Publishing\Infrastructure\Repository;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-use WorkWithUs\Auth\Domain\Entity\JobVacancy;
+use WorkWithUs\Publishing\Domain\Entity\JobVacancy;
 use WorkWithUs\Publishing\Domain\Repository\JobVacancyRepositoryInterface;
 use WorkWithUs\Publishing\Domain\ValueObject\JobVacancyStatus;
 

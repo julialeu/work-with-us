@@ -8,7 +8,6 @@ class User
     private string $email;
     private string $hashedPassword;
     private string $name;
-    private ?string $company;
 
     public function id(): ?int
     {
@@ -54,18 +53,6 @@ class User
     public function setName($name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function company(): string
-    {
-        return $this->company;
-    }
-
-    public function setCompany(?string $company): self
-    {
-        $this->company = $company;
 
         return $this;
     }

@@ -2,7 +2,7 @@
 
 namespace WorkWithUs\Company\Application\Service;
 
-use WorkWithUs\Auth\Domain\Service\SlugifyService;
+use WorkWithUs\Shared\Domain\Service\SlugifyService;
 use WorkWithUs\Company\Domain\Entity\Company;
 use WorkWithUs\Company\Infrastructure\CompanyRepository;
 

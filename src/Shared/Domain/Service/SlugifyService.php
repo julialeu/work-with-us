@@ -1,6 +1,6 @@
 <?php
 
-namespace WorkWithUs\Auth\Domain\Service;
+namespace WorkWithUs\Shared\Domain\Service;
 
 class SlugifyService
 {

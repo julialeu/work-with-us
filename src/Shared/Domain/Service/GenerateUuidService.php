@@ -1,6 +1,6 @@
 <?php
 
-namespace WorkWithUs\Auth\Domain\Service;
+namespace WorkWithUs\Shared\Domain\Service;
 
 class GenerateUuidService
 {
@@ -17,7 +17,6 @@ class GenerateUuidService
 
         for ($i = 0; $i < 8; $i++) {
             $index = rand(0, strlen($characters)-1);
-            //strlen($characters)
             $randomString1 .= $characters[$index];
         }
 

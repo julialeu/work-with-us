@@ -3,7 +3,7 @@
 namespace Tests\Unit\Src\Auth\Domain\Service;
 
 use Tests\TestCase;
-use WorkWithUs\Auth\Domain\Service\SlugifyService;
+use WorkWithUs\Shared\Domain\Service\SlugifyService;
 
 class SlugifyServiceTest extends TestCase
 {

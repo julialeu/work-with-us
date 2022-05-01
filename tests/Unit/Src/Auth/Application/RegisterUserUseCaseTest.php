@@ -54,8 +54,7 @@ class RegisterUserUseCaseTest extends TestCase
         $user = (new User())
             ->setEmail('gato@gmail.com')
             ->setName('Gato')
-            ->setHashedPassword('7s9d8f79sdf8s0d8fa0s9df')
-            ->setCompany('Gato S.L.');
+            ->setHashedPassword('7s9d8f79sdf8s0d8fa0s9df');
 
         $this->usersRepository
             ->expects(self::once())

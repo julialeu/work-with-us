@@ -3,12 +3,12 @@
 namespace Tests\Unit\Src\Publishing\Application;
 
 use Tests\TestCase;
-use WorkWithUs\Auth\Domain\Entity\JobVacancy;
-use WorkWithUs\Auth\Domain\Service\GenerateRandomStringService;
-use WorkWithUs\Auth\Domain\Service\GenerateUuidService;
 use WorkWithUs\Publishing\Application\CreateJobVacancyUseCase;
+use WorkWithUs\Publishing\Domain\Entity\JobVacancy;
 use WorkWithUs\Publishing\Domain\ValueObject\JobVacancyStatus;
 use WorkWithUs\Publishing\Domain\Repository\JobVacancyRepositoryInterface;
+use WorkWithUs\Shared\Domain\Service\GenerateRandomStringService;
+use WorkWithUs\Shared\Domain\Service\GenerateUuidService;
 
 class CreateJobVacancyUseCaseTest extends TestCase
 {
@@ -46,14 +46,14 @@ class CreateJobVacancyUseCaseTest extends TestCase
             ->method('generate')
             ->willReturn('aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee');
 
-        $jobVacancyStatus = new JobVacancyStatus(JobVacancyStatus::PUBLISHED);
+        $jobVacancyStatus = new JobVacancyStatus(JobVacancyStatus::UNPUBLISHED);
 
         $jobVacancy = (new JobVacancy())
             ->setUserId(2)
+            ->setCompanyId(70)
             ->setJobVacancyStatus($jobVacancyStatus)
             ->setTitle('Trainee front-end')
             ->setDescription('Trainee front-end')
-            ->setCompany('Cocacola')
             ->setLocation('Pamplona')
             ->setModality('on_site')
             ->setWorkingTime('Jornada completa')
@@ -70,7 +70,7 @@ class CreateJobVacancyUseCaseTest extends TestCase
             2,
             'Trainee front-end',
             'Trainee front-end',
-            'Cocacola',
+            70,
             'Pamplona',
             'on_site',
             'Jornada completa',

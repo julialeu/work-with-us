@@ -2,7 +2,7 @@
 
 namespace WorkWithUs\Publishing\Domain\Repository;
 
-use WorkWithUs\Auth\Domain\Entity\JobVacancy;
+use WorkWithUs\Publishing\Domain\Entity\JobVacancy;
 
 interface JobVacancyRepositoryInterface
 {

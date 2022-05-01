@@ -2,8 +2,8 @@
 
 namespace WorkWithUs\Publishing\Application;
 
-use WorkWithUs\Auth\Domain\Entity\JobVacancy;
 use WorkWithUs\Auth\Domain\Entity\User;
+use WorkWithUs\Publishing\Domain\Entity\JobVacancy;
 use WorkWithUs\Publishing\Domain\Repository\JobVacancyRepositoryInterface;
 
 class GetJobVacanciesUseCase
@@ -35,7 +35,6 @@ class GetJobVacanciesUseCase
 
         $dataItems = [];
 
-
         foreach ($jobVacancies as $jobVacancy) {
             $item = [
                 'id' => $jobVacancy->id(),
@@ -43,7 +42,6 @@ class GetJobVacanciesUseCase
                 'title' => $jobVacancy->title(),
                 'description' => $jobVacancy->description(),
                 'company_id' => $jobVacancy->companyId(),
-                'company_name' => $jobVacancy->companyName(),
                 'location' => $jobVacancy->location(),
                 'modality' => $jobVacancy->modality(),
                 'working_time' => $jobVacancy->workingTime(),
@@ -53,7 +51,6 @@ class GetJobVacanciesUseCase
             ];
 
             $dataItems[] = $item;
-
         }
 
         $data = [

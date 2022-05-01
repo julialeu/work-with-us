@@ -1,6 +1,6 @@
 <?php
 
-namespace WorkWithUs\Auth\Domain\Entity;
+namespace WorkWithUs\Publishing\Domain\Entity;
 
 use Carbon\Carbon;
 use WorkWithUs\Publishing\Domain\ValueObject\JobVacancyStatus;
