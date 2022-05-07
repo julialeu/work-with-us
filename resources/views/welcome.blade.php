@@ -21,6 +21,37 @@
     </div>
     <div class="hint">
         <h3>Work With Us es la forma más fácil para que los equipos de HR puedan gestionar los procesos de contratación.</h3>
+
+        <div class="columns">
+            <div class="column">
+                <img src="/assets/icons/lupa.png" alt="lupa">
+                <div>
+                    <h5 style="color: #00b7cd;">FUENTE & IMÁN</h5>
+                </div>
+                <div>
+                    <h2>Encuentra y atrae al talento</h2>
+                </div>
+            </div>
+            <div class="column">
+                <img src="/assets/icons/equipo.png" alt="equipo">
+                <div>
+                    <h5 style="color: #4385e0;">EVALÚA & COLABORA</h5>
+                </div>
+                <div>
+                    <h2>Apóyate en el equipo de HR y avanza con los candidatos ideales.</h2>
+                </div>
+            </div>
+            <div class="column">
+                <img src="/assets/icons/calendario.png" alt="calendario">
+                <div>
+                    <h5 style="color: #4d52b1;">AUTOMATIZA & CONTRATA</h5>
+                </div>
+                <div>
+                    <h2>Haz la mejor contratación en la mitad de tiempo.</h2>
+                </div>
+
+            </div>
+        </div>
     </div>
     <div class="cta">
 

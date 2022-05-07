@@ -142,3 +142,22 @@ li {
 .siteFooter li a {
     text-decoration: none;
 }
+
+.column{
+    width:100%;
+}
+
+@media (min-width: 48em) {
+    .columns {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+}
+
+.column h5 {
+    font-size: 2rem;
+    font-weight: bolder;
+}
+

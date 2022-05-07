@@ -117,7 +117,10 @@ class JobVacancyRepositoryMySql implements JobVacancyRepositoryInterface
     {
         $query = "select * from job_vacancies where uuid = '$uuid'";
 
+        \Log::info('query = '. $query);
+
         $result = DB::select($query);
+
         // Item es de tipo stdClass
         $item = $result[0];
 

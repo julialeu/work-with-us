@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
-use WorkWithUs\Auth\Domain\Service\GetAuthenticatedUserService;
 use WorkWithUs\Company\Infrastructure\CompanyRepository;
 use WorkWithUs\Publishing\Domain\Repository\JobVacancyRepositoryInterface;
 
@@ -11,14 +10,11 @@ class ShowCompanyPageController
 {
     public function __invoke(
         Request $request,
-        GetAuthenticatedUserService $getAuthenticatedUserService,
         CompanyRepository $companyRepository,
         JobVacancyRepositoryInterface $jobVacancyRepository
-
     ) {
         $companySlug = $request->route('companySlug');
         $workingTime = $request->get('working_time');
-
 
         $modality = $request->get('modality');
         $experience = $request->get('experience');
@@ -29,7 +25,6 @@ class ShowCompanyPageController
             $workingTime,
             $modality,
             $experience,
-
         );
 
         return view('company-page', [

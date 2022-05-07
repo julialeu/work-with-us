@@ -41,22 +41,46 @@
                 <div>
                     <select id="working_time" name="working_time">
                         <option value="">Jornada</option>
-                        <option value="full_time" <?php if($workingTime === 'full_time') { echo 'selected'; } ?> >Jornada completa</option>
-                        <option value="part_time" <?php if($workingTime === 'part_time') {echo 'selected';} ?> >Media jornada</option>
+                        <option value="full_time" <?php if ($workingTime === 'full_time') {
+                            echo 'selected';
+                        } ?> >Jornada completa
+                        </option>
+                        <option value="part_time" <?php if ($workingTime === 'part_time') {
+                            echo 'selected';
+                        } ?> >Media jornada
+                        </option>
                     </select>
 
                     <select id="modality" name="modality">
                         <option value="">Modalidad</option>
-                        <option value="on_site" <?php if ($modality === 'on_site') {echo 'selected';} ?> >Presencial</option>
-                        <option value="remote" <?php if ($modality === 'remote') {echo 'selected';} ?> >Remoto</option>
-                        <option value="hybrid" <?php if ($modality === 'hibryd') {echo 'selected';} ?> >Híbrido</option>
+                        <option value="on_site" <?php if ($modality === 'on_site') {
+                            echo 'selected';
+                        } ?> >Presencial
+                        </option>
+                        <option value="remote" <?php if ($modality === 'remote') {
+                            echo 'selected';
+                        } ?> >Remoto
+                        </option>
+                        <option value="hybrid" <?php if ($modality === 'hibryd') {
+                            echo 'selected';
+                        } ?> >Híbrido
+                        </option>
                     </select>
 
                     <select id="experience" name="experience">
                         <option value="">Experiencia</option>
-                        <option value="trainee" <?php if ($experience === 'trainee') {echo 'selected';} ?> >Prácticas</option>
-                        <option value="junior" <?php if ($experience === 'junior') {echo 'selected';} ?> >Junior</option>
-                        <option value="senior" <?php if ($experience === 'senior') {echo 'selected';} ?> >Senior</option>
+                        <option value="trainee" <?php if ($experience === 'trainee') {
+                            echo 'selected';
+                        } ?> >Prácticas
+                        </option>
+                        <option value="junior" <?php if ($experience === 'junior') {
+                            echo 'selected';
+                        } ?> >Junior
+                        </option>
+                        <option value="senior" <?php if ($experience === 'senior') {
+                            echo 'selected';
+                        } ?> >Senior
+                        </option>
                     </select>
                 </div>
                 <br>
@@ -65,11 +89,10 @@
             </form>
 
 
-
             <ul class="list">
 
-                <li>
-                    @foreach ($jobVacancies as $jobVacancy)
+                @foreach ($jobVacancies as $jobVacancy)
+                    <li>
 
                         <?php
                         $date = $jobVacancy->createdAt();
@@ -94,8 +117,9 @@
                                 <span class="tag location">{{ $jobVacancy->location() }}</span>
                                 <span class="tag working_time">· {{ $jobVacancy->workingTime() }}</span>
                             </div>
-                    @endforeach
-                </li>
+                        </a>
+                    </li>
+                @endforeach
             </ul>
 
         </div>
