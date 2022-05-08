@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Src\Auth\Domain\Service;
+namespace Tests\Unit\Src\Shared\Domain\Service;
 
 use Tests\TestCase;
 use WorkWithUs\Shared\Domain\Service\GenerateRandomStringService;
